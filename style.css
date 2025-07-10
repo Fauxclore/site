@@ -234,3 +234,145 @@ img {
 .back-button:hover {
   background-color: #ddd;
 }
+
+/* CSS Links */
+
+.profile__container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  list-style: none;
+  flex-flow: column;
+  padding: 0 20px; /* Add horizontal padding for mobile */
+  position: relative;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile__container.active {
+  max-height: 953px;
+}
+
+.profile__image {
+  width: 60%;
+  min-width: 120px; /* Ensure minimum size */
+  max-width: 600px; /* Prevent too large on desktop */
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile__links {
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--color-disable);
+  padding: 20px;
+  border-radius: 10px;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: block;
+  width: 600px; /* Fixed width for consistent sizing */
+  max-width: calc(100vw - 40px); /* Responsive max-width with padding */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.profile__links:hover {
+  background: var(--color-secondary);
+  padding: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: 0.5s;
+  border: 1px dashed white;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+  font-weight: bolder;
+  margin: 20px 0;
+}
+
+.subtitle {
+  font-size: clamp(0.9rem, 3vw, 1rem); /* Responsive font size */
+  font-weight: 400;
+  color: var(--color-primary);
+  margin: 10px 0;
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+  body {
+    padding-bottom: 30px;
+  }
+
+  .profile__container {
+    padding: 0 15px;
+  }
+
+  .profile__image {
+    width: 30%;
+    min-width: 100px;
+    max-width: 150px;
+  }
+
+  .profile__links {
+    font-size: 0.9rem;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .profile__links:hover {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin: 15px 0;
+  }
+
+  .subtitle {
+    font-size: clamp(0.8rem, 4vw, 0.9rem);
+    margin: 8px 0;
+  }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+  .profile__container {
+    padding: 0 10px;
+  }
+
+  .profile__image {
+    width: 35%;
+    min-width: 80px;
+    max-width: 120px;
+  }
+
+  .profile__links {
+    font-size: 0.85rem;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .profile__links:hover {
+    padding: 12px;
+  }
+}
+
+:root {
+  --color-dark: #2f3e46;
+  --color-primary: #cad2c5;
+  --color-disable: #000000;
+  --color-alternative: #cad2c5;
+  --color-secondary: #354f52;
+  --color-blue: #0b4ca1;
+}
