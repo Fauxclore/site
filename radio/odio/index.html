@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+     <title>Esta máquina mói o ódio</title>
+  </head>
+  <body>
+    <div id="bg"></div>
+    <div id="content">
+      <textarea
+        id="input"
+        placeholder="Escreve aqui um exemplo de ódio que tenhas visto, sentido ou sofrido"
+        maxlength="300"
+        class="tr"
+      ></textarea>
+      <button
+        onclick="submitText();"
+      >
+        SUBMETER
+      </button>
+      <div id="decoded"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
