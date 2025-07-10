@@ -1,0 +1,236 @@
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  width: 100%;
+  padding-bottom: 20px;
+  margin: 0;
+}
+h2,
+h3 {
+  text-align: center;
+  font-size: 2rem;
+  width: 100%;
+  margin-top: 100px;
+}
+h4 {
+  text-align: center;
+  font-size: 3rem;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+body {
+  margin: 0;
+  font-family: "DM Mono", monospace;
+  background-color: #344e41;
+  color: #dad7cd;
+  text-align: justify;
+  padding-bottom: 150px;
+}
+
+a,
+a:visited {
+  color: #b6cec2;
+}
+/* Topbar em vez de sidebar */
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  background-color: #171a21;
+  color: #dad7cd;
+  z-index: 1;
+  overflow-x: auto;
+}
+
+/* Avatar posicionado na barra superior */
+.avatar-container {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Links na barra superior */
+.topbar a {
+  margin: 0 15px;
+  padding: 6px 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: inherit;
+  display: block;
+}
+
+.topbar a:hover {
+  color: white;
+}
+
+/* Espaçamento para o conteúdo principal abaixo da topbar */
+.main-base,
+.main-posts {
+  padding-top: 80px; /* altura da topbar + margem */
+}
+/* Media query para ecrãs muito baixos */
+@media screen and (max-height: 450px) {
+  .topbar {
+    height: 50px;
+    padding: 0 15px;
+  }
+  .topbar a {
+    font-size: 0.9rem;
+  }
+}
+
+.main-base {
+  margin: 0 auto;
+  font-size: 1.1rem;
+  min-height: 100vh;
+  width: 90%;
+}
+
+.main-posts {
+  margin: 0 auto;
+  font-size: 1.1rem;
+  min-height: 100vh;
+  width: 60%;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: auto;
+}
+
+.image-mosaic {
+  padding-top: 50px;
+  column-count: auto;
+  column-width: 240px;
+  column-gap: 0.5rem;
+}
+
+.card {
+  break-inside: avoid;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+  filter: grayscale(1);
+}
+
+.card:hover {
+  transform: scale(1.02);
+  filter: grayscale(0);
+}
+
+.card a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media screen and (min-width: 600px) {
+  .image-mosaic {
+    column-width: 200px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .image-mosaic {
+    column-width: 320px;
+  }
+}
+
+.post-mosaic {
+  column-count: auto;
+  column-width: 22rem;
+  column-gap: 0.5rem;
+}
+
+.post-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  break-inside: avoid;
+  margin-bottom: 0.75rem;
+}
+
+.post-img {
+  object-fit: cover;
+  display: block;
+  height: auto;
+}
+
+.post-info {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.post-container:hover .post-info {
+  opacity: 1;
+}
+
+.post-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.post-slug {
+  margin: 1rem;
+  font-size: 1rem;
+  opacity: 0.9;
+  text-align: justify;
+  hyphens: auto;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.back-button {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  font-family: "DM Mono", monospace;
+  font-size: 1.5rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #ddd;
+}
