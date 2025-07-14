@@ -1,32 +1,26 @@
 h1 {
   text-align: center;
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-size: 3rem;
   max-width: 100%;
   padding-bottom: 20px;
   margin: 0;
-  line-height: 1.2;
 }
-
 h2,
 h3 {
   text-align: center;
-  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-size: 2rem;
   max-width: 100%;
   margin-top: 100px;
-  line-height: 1.2;
 }
-
 h4 {
   text-align: center;
-  font-size: clamp(2rem, 7vw, 3rem);
+  font-size: 3rem;
   max-width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
-  line-height: 1.2;
 }
-
 body {
   margin: 0;
   font-family: "DM Mono", monospace;
@@ -47,7 +41,7 @@ a,
 a:visited {
   color: #b6cec2;
 }
-
+/* Topbar em vez de sidebar */
 /* Responsive Topbar */
 .topbar {
   display: flex;
@@ -107,53 +101,37 @@ a:visited {
 /* Adjust main content padding for flexible topbar height */
 .main-base,
 .main-posts {
-  padding-top: 100px;
+  padding-top: 100px; /* Increased to accommodate potential wrapping */
 }
 
 /* Medium screens */
 @media screen and (max-width: 768px) {
   .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-    min-height: auto;
+    padding: 10px 15px;
   }
 
   .avatar-container {
-    margin-right: 0;
-    margin-bottom: 15px;
-    align-self: center;
+    margin-right: 20px;
   }
 
   .topbar nav {
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-    align-items: flex-start;
+    gap: 10px;
   }
 
   .topbar a {
     font-size: 0.9rem;
-    padding: 8px 0;
-    width: 100%;
-    text-align: left;
-    border-bottom: 1px solid rgba(218, 215, 205, 0.2);
-  }
-
-  .main-base,
-  .main-posts {
-    padding-top: 180px; /* Increased for vertical topbar */
+    padding: 5px 6px;
   }
 }
 
 /* Small screens */
 @media screen and (max-width: 600px) {
   .topbar {
-    padding: 12px;
+    padding: 8px 12px;
   }
 
   .avatar-container {
-    margin-bottom: 12px;
+    margin-right: 15px;
   }
 
   .avatar {
@@ -162,28 +140,23 @@ a:visited {
   }
 
   .topbar nav {
-    gap: 6px;
+    gap: 8px;
   }
 
   .topbar a {
     font-size: 0.85rem;
-    padding: 6px 0;
-  }
-
-  .main-base,
-  .main-posts {
-    padding-top: 160px;
+    padding: 4px 6px;
   }
 }
 
 /* Very small screens */
 @media screen and (max-width: 480px) {
   .topbar {
-    padding: 10px;
+    padding: 8px 10px;
   }
 
   .avatar-container {
-    margin-bottom: 10px;
+    margin-right: 10px;
   }
 
   .avatar {
@@ -192,17 +165,12 @@ a:visited {
   }
 
   .topbar nav {
-    gap: 4px;
+    gap: 6px;
   }
 
   .topbar a {
     font-size: 0.8rem;
-    padding: 5px 0;
-  }
-
-  .main-base,
-  .main-posts {
-    padding-top: 140px;
+    padding: 3px 5px;
   }
 }
 
@@ -218,7 +186,6 @@ a:visited {
     padding-top: 80px;
   }
 }
-
 .main-base {
   margin: 0 auto;
   font-size: 1.1rem;
@@ -364,7 +331,8 @@ img {
   background-color: #ddd;
 }
 
-/* Profile Container */
+/* CSS Links */
+
 .profile__container {
   display: inline-flex;
   justify-content: center;
@@ -372,7 +340,7 @@ img {
   text-align: center;
   list-style: none;
   flex-flow: column;
-  padding: 0 20px;
+  padding: 0 20px; /* Add horizontal padding for mobile */
   position: relative;
   align-items: center;
   width: 100%;
@@ -385,8 +353,8 @@ img {
 
 .profile__image {
   width: 60%;
-  min-width: 120px;
-  max-width: 600px;
+  min-width: 120px; /* Ensure minimum size */
+  max-width: 600px; /* Prevent too large on desktop */
   object-fit: cover;
   border-radius: 50%;
 }
@@ -401,8 +369,8 @@ img {
   text-decoration: none;
   margin-bottom: 20px;
   display: block;
-  width: 600px;
-  max-width: calc(100vw - 40px);
+  width: 600px; /* Fixed width for consistent sizing */
+  max-width: calc(100vw - 40px); /* Responsive max-width with padding */
   word-wrap: break-word;
   overflow-wrap: break-word;
   box-sizing: border-box;
@@ -424,18 +392,16 @@ img {
 
 .title {
   text-transform: uppercase;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
   font-weight: bolder;
   margin: 20px 0;
-  line-height: 1.2;
 }
 
 .subtitle {
-  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-size: clamp(0.9rem, 3vw, 1rem); /* Responsive font size */
   font-weight: 400;
   color: var(--color-primary);
   margin: 10px 0;
-  line-height: 1.3;
 }
 
 /* Mobile-specific styles */
