@@ -223,14 +223,14 @@ a:visited {
   margin: 0 auto;
   font-size: 1.1rem;
   min-height: 100vh;
-  max-width: 90%;
+  width: 90%;
 }
 
 .main-posts {
   margin: 0 auto;
   font-size: 1.1rem;
   min-height: 100vh;
-  max-width: 60%;
+  width: 60%;
 }
 
 img {
