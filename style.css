@@ -1,32 +1,26 @@
 h1 {
   text-align: center;
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-size: 3rem;
   max-width: 100%;
   padding-bottom: 20px;
   margin: 0;
-  line-height: 1.2;
 }
-
 h2,
 h3 {
   text-align: center;
-  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-size: 2rem;
   max-width: 100%;
   margin-top: 100px;
-  line-height: 1.2;
 }
-
 h4 {
   text-align: center;
-  font-size: clamp(2rem, 7vw, 3rem);
+  font-size: 3rem;
   max-width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
-  line-height: 1.2;
 }
-
 body {
   margin: 0;
   font-family: "DM Mono", monospace;
@@ -47,31 +41,29 @@ a,
 a:visited {
   color: #b6cec2;
 }
-
-/* Responsive Topbar */
+/* Topbar em vez de sidebar */
 .topbar {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 60px;
-  padding: 10px 20px;
+  height: 60px;
+  padding: 0 20px;
   background-color: #171a21;
   color: #dad7cd;
   z-index: 1;
-  box-sizing: border-box;
+  overflow-x: auto;
 }
 
-/* Avatar container stays fixed */
+/* Avatar posicionado na barra superior */
 .avatar-container {
   display: flex;
   align-items: center;
   margin-right: 30px;
-  flex-shrink: 0;
 }
 
 .avatar {
@@ -81,141 +73,33 @@ a:visited {
   object-fit: cover;
 }
 
-/* Navigation links container */
-.topbar nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 15px;
-  flex-grow: 1;
-}
-
-/* Links styling */
+/* Links na barra superior */
 .topbar a {
+  margin: 0 15px;
   padding: 6px 8px;
   text-decoration: none;
   font-size: 1rem;
   color: inherit;
-  white-space: nowrap;
-  flex-shrink: 0;
+  display: block;
 }
 
 .topbar a:hover {
   color: white;
 }
 
-/* Adjust main content padding for flexible topbar height */
+/* Espaçamento para o conteúdo principal abaixo da topbar */
 .main-base,
 .main-posts {
-  padding-top: 100px;
+  padding-top: 80px; /* altura da topbar + margem */
 }
-
-/* Medium screens */
-@media screen and (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-    min-height: auto;
-  }
-
-  .avatar-container {
-    margin-right: 0;
-    margin-bottom: 15px;
-    align-self: center;
-  }
-
-  .topbar nav {
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-    align-items: flex-start;
-  }
-
-  .topbar a {
-    font-size: 0.9rem;
-    padding: 8px 0;
-    width: 100%;
-    text-align: left;
-    border-bottom: 1px solid rgba(218, 215, 205, 0.2);
-  }
-
-  .main-base,
-  .main-posts {
-    padding-top: 180px; /* Increased for vertical topbar */
-  }
-}
-
-/* Small screens */
-@media screen and (max-width: 600px) {
-  .topbar {
-    padding: 12px;
-  }
-
-  .avatar-container {
-    margin-bottom: 12px;
-  }
-
-  .avatar {
-    width: 35px;
-    height: 35px;
-  }
-
-  .topbar nav {
-    gap: 6px;
-  }
-
-  .topbar a {
-    font-size: 0.85rem;
-    padding: 6px 0;
-  }
-
-  .main-base,
-  .main-posts {
-    padding-top: 160px;
-  }
-}
-
-/* Very small screens */
-@media screen and (max-width: 480px) {
-  .topbar {
-    padding: 10px;
-  }
-
-  .avatar-container {
-    margin-bottom: 10px;
-  }
-
-  .avatar {
-    width: 30px;
-    height: 30px;
-  }
-
-  .topbar nav {
-    gap: 4px;
-  }
-
-  .topbar a {
-    font-size: 0.8rem;
-    padding: 5px 0;
-  }
-
-  .main-base,
-  .main-posts {
-    padding-top: 140px;
-  }
-}
-
-/* Extra adjustment for very low height screens */
+/* Media query para ecrãs muito baixos */
 @media screen and (max-height: 450px) {
   .topbar {
-    min-height: 50px;
-    padding: 8px 15px;
+    height: 50px;
+    padding: 0 15px;
   }
-
-  .main-base,
-  .main-posts {
-    padding-top: 80px;
+  .topbar a {
+    font-size: 0.9rem;
   }
 }
 
@@ -223,21 +107,21 @@ a:visited {
   margin: 0 auto;
   font-size: 1.1rem;
   min-height: 100vh;
-  width: 90%;
+  max-width: 100%;
 }
 
 .main-posts {
   margin: 0 auto;
   font-size: 1.1rem;
   min-height: 100vh;
-  width: 60%;
+  max-width: 90%;
 }
 
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -275,15 +159,9 @@ img {
   display: block;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 600px) {
   .image-mosaic {
     column-width: 200px;
-  }
-  .main-base {
-    max-width: 95%;
-  }
-  .main-posts {
-    max-width: 95%;
   }
 }
 
@@ -364,7 +242,8 @@ img {
   background-color: #ddd;
 }
 
-/* Profile Container */
+/* CSS Links */
+
 .profile__container {
   display: inline-flex;
   justify-content: center;
@@ -372,7 +251,7 @@ img {
   text-align: center;
   list-style: none;
   flex-flow: column;
-  padding: 0 20px;
+  padding: 0 20px; /* Add horizontal padding for mobile */
   position: relative;
   align-items: center;
   width: 100%;
@@ -385,8 +264,8 @@ img {
 
 .profile__image {
   width: 60%;
-  min-width: 120px;
-  max-width: 600px;
+  min-width: 120px; /* Ensure minimum size */
+  max-width: 600px; /* Prevent too large on desktop */
   object-fit: cover;
   border-radius: 50%;
 }
@@ -401,8 +280,8 @@ img {
   text-decoration: none;
   margin-bottom: 20px;
   display: block;
-  width: 600px;
-  max-width: calc(100vw - 40px);
+  width: 600px; /* Fixed width for consistent sizing */
+  max-width: calc(100vw - 40px); /* Responsive max-width with padding */
   word-wrap: break-word;
   overflow-wrap: break-word;
   box-sizing: border-box;
@@ -424,18 +303,16 @@ img {
 
 .title {
   text-transform: uppercase;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
   font-weight: bolder;
   margin: 20px 0;
-  line-height: 1.2;
 }
 
 .subtitle {
-  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-size: clamp(0.9rem, 3vw, 1rem); /* Responsive font size */
   font-weight: 400;
   color: var(--color-primary);
   margin: 10px 0;
-  line-height: 1.3;
 }
 
 /* Mobile-specific styles */
