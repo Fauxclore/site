@@ -42,28 +42,30 @@ a:visited {
   color: #b6cec2;
 }
 /* Topbar em vez de sidebar */
+/* Responsive Topbar */
 .topbar {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
-  padding: 0 20px;
+  min-height: 60px;
+  padding: 10px 20px;
   background-color: #171a21;
   color: #dad7cd;
   z-index: 1;
-  overflow-x: auto;
+  box-sizing: border-box;
 }
 
-/* Avatar posicionado na barra superior */
+/* Avatar container stays fixed */
 .avatar-container {
   display: flex;
   align-items: center;
   margin-right: 30px;
+  flex-shrink: 0;
 }
 
 .avatar {
@@ -73,55 +75,136 @@ a:visited {
   object-fit: cover;
 }
 
-/* Links na barra superior */
+/* Navigation links container */
+.topbar nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+/* Links styling */
 .topbar a {
-  margin: 0 15px;
   padding: 6px 8px;
   text-decoration: none;
   font-size: 1rem;
   color: inherit;
-  display: block;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .topbar a:hover {
   color: white;
 }
 
-/* Espaçamento para o conteúdo principal abaixo da topbar */
+/* Adjust main content padding for flexible topbar height */
 .main-base,
 .main-posts {
-  padding-top: 80px; /* altura da topbar + margem */
+  padding-top: 100px; /* Increased to accommodate potential wrapping */
 }
-/* Media query para ecrãs muito baixos */
-@media screen and (max-height: 450px) {
+
+/* Medium screens */
+@media screen and (max-width: 768px) {
   .topbar {
-    height: 50px;
-    padding: 0 15px;
+    padding: 10px 15px;
   }
+
+  .avatar-container {
+    margin-right: 20px;
+  }
+
+  .topbar nav {
+    gap: 10px;
+  }
+
   .topbar a {
     font-size: 0.9rem;
+    padding: 5px 6px;
   }
 }
 
-.main-base {
-  margin: 0 auto;
-  font-size: 1.1rem;
-  min-height: 100vh;
-  max-width: 100%;
+/* Small screens */
+@media screen and (max-width: 600px) {
+  .topbar {
+    padding: 8px 12px;
+  }
+
+  .avatar-container {
+    margin-right: 15px;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .topbar nav {
+    gap: 8px;
+  }
+
+  .topbar a {
+    font-size: 0.85rem;
+    padding: 4px 6px;
+  }
 }
 
-.main-posts {
+/* Very small screens */
+@media screen and (max-width: 480px) {
+  .topbar {
+    padding: 8px 10px;
+  }
+
+  .avatar-container {
+    margin-right: 10px;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .topbar nav {
+    gap: 6px;
+  }
+
+  .topbar a {
+    font-size: 0.8rem;
+    padding: 3px 5px;
+  }
+}
+
+/* Extra adjustment for very low height screens */
+@media screen and (max-height: 450px) {
+  .topbar {
+    min-height: 50px;
+    padding: 8px 15px;
+  }
+
+  .main-base,
+  .main-posts {
+    padding-top: 80px;
+  }
+}
+.main-base {
   margin: 0 auto;
   font-size: 1.1rem;
   min-height: 100vh;
   max-width: 90%;
 }
 
+.main-posts {
+  margin: 0 auto;
+  font-size: 1.1rem;
+  min-height: 100vh;
+  max-width: 60%;
+}
+
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
@@ -159,9 +242,15 @@ img {
   display: block;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 768px) {
   .image-mosaic {
     column-width: 200px;
+  }
+  .main-base {
+    max-width: 95%;
+  }
+  .main-posts {
+    max-width: 95%;
   }
 }
 
