@@ -1,119 +1,113 @@
-h1 {
-  text-align: center;
-  font-size: 3rem;
-  max-width: 100%;
-  padding-bottom: 20px;
-  margin: 0;
+/* Reset sizing para elementos e pseudo-elementos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-h2,
-h3 {
-  text-align: center;
-  font-size: 2rem;
-  max-width: 100%;
-  margin-top: 100px;
-}
-h4 {
-  text-align: center;
-  font-size: 3rem;
-  max-width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+
+/* Corpo da página */
 body {
   margin: 0;
+  padding: 0 1rem 150px;
   font-family: "DM Mono", monospace;
   background-color: #344e41;
   color: #dad7cd;
   text-align: justify;
-  padding-bottom: 150px;
 }
 
+/* Headings responsivos */
+h1 {
+  text-align: center;
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0 0 20px;
+}
+h2,
+h3 {
+  text-align: center;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin: 100px auto 0;
+}
+h4 {
+  text-align: center;
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 20px auto;
+  padding: 50px 0;
+}
+
+/* Iframes centrados */
 iframe {
   padding: 10px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
+/* Links */
 a,
 a:visited {
   color: #b6cec2;
 }
 
-/* Topbar em vez de sidebar */
+/* Topbar */
 .topbar {
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; /* This centers the content */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 20px;
   background-color: #171a21;
   color: #dad7cd;
-  overflow: hidden;
+  z-index: 999;
+  flex-wrap: wrap;
 }
-
-.topbar .icon {
-  display: none;
-}
-
-/* Links na barra superior */
 .topbar a {
   margin: 0 15px;
   padding: 6px 8px;
   text-decoration: none;
   font-size: 1rem;
   color: inherit;
-  display: block;
+  text-align: center;
 }
-
 .topbar a:hover {
   background-color: black;
   color: white;
 }
-
-/* Espaçamento para o conteúdo principal abaixo da topbar */
-.main-base,
-.main-posts {
-  padding-top: 80px; /* altura da topbar + margem */
-}
-
-.main-base {
+.topbar .icon {
+  display: none;
+  order: -1;
   margin: 0 auto;
-  font-size: 1.1rem;
-  min-height: 100vh;
-  max-width: 90%;
 }
 
-.main-posts {
+/* Espaço abaixo da topbar */
+.main {
   margin: 0 auto;
-  font-size: 1.1rem;
+  padding: 80px 1rem 0;
+  max-width: 90ch;
   min-height: 100vh;
-  max-width: 60%;
+  font-size: 1.1rem;
+  box-sizing: border-box;
 }
 
+/* Imagens fluidas */
 img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   width: 100%;
   height: auto;
 }
 
+/* Mosaic de imagens (masonry usando colunas) */
 .image-mosaic {
-  padding-top: 50px;
-  column-count: auto;
-  column-width: 240px;
+  column-width: 250px;
   column-gap: 0.5rem;
+  margin: 50px auto;
+  padding: 0 1rem;
 }
 
+/* Cartões de imagem */
 .card {
   break-inside: avoid;
   margin-bottom: 0.5rem;
@@ -122,104 +116,27 @@ img {
   transition: transform 0.2s ease;
   filter: grayscale(1);
 }
-
 .card:hover {
   transform: scale(1.02);
   filter: grayscale(0);
 }
-
 .card a {
   display: block;
   width: 100%;
   text-decoration: none;
 }
-
 .card img {
   width: 100%;
   height: auto;
   object-fit: contain;
-  display: block;
 }
 
-@media screen and (max-width: 980px) {
-  .image-mosaic {
-    margin-left: 10px;
-    margin-right: 10px;
-    column-width: 200px;
-  }
-  .main-base {
-    margin-left: 10px;
-    margin-right: 10px;
-    box-sizing: border-box;
-    font-size: 1rem;
-  }
-  .main-posts {
-    box-sizing: border-box;
-    font-size: 1rem;
-  }
-}
-
-@media screen and (min-width: 980px) {
-  .image-mosaic {
-    column-width: 320px;
-  }
-}
-
-@media screen and (max-width: 980px) {
-  .topbar a {
-    display: none;
-  }
-  .topbar a.icon {
-    position: absolute;
-    display: block;
-    padding: 6px 8px;
-    margin: 0;
-  }
-}
-
-/* When hamburger is clicked, show responsive menu */
-@media screen and (max-width: 980px) {
-  .topbar.responsive {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    padding: 0;
-    background-color: #171a21;
-  }
-
-  .topbar.responsive .icon {
-    position: absolute;
-    padding: 6px 8px;
-    margin: 0;
-    margin-top: 15px;
-    margin-right: 20px;
-  }
-
-  .topbar.responsive a {
-    float: none;
-    display: block;
-    text-align: center;
-    padding: 15px 20px;
-    margin: 0;
-    width: 100%;
-    box-sizing: border-box;
-    border-bottom: 1px solid #2a2a2a;
-  }
-
-  .topbar.responsive a:not(.icon):first-of-type {
-    margin-top: 60px;
-  }
-}
-
+/* Post mosaic (masonry usando colunas) */
 .post-mosaic {
-  column-count: auto;
-  column-width: 22rem;
+  column-width: 25rem;
   column-gap: 0.5rem;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
 }
 
 .post-container {
@@ -229,13 +146,11 @@ img {
   break-inside: avoid;
   margin-bottom: 0.75rem;
 }
-
 .post-img {
+  width: 100%;
   object-fit: cover;
   display: block;
-  height: auto;
 }
-
 .post-info {
   position: absolute;
   inset: 0;
@@ -249,19 +164,14 @@ img {
   transition: opacity 0.3s ease;
   text-align: center;
   padding: 1rem;
-  box-sizing: border-box;
 }
-
 .post-container:hover .post-info {
   opacity: 1;
 }
-
 .post-title {
   margin: 0;
   font-size: 1.1rem;
-  color: white;
 }
-
 .post-slug {
   margin: 1rem;
   font-size: 1rem;
@@ -269,9 +179,9 @@ img {
   text-align: justify;
   hyphens: auto;
   word-wrap: break-word;
-  max-width: 100%;
 }
 
+/* Botão “voltar” */
 .back-button {
   margin: 1rem 0;
   padding: 0.5rem 1rem;
@@ -282,130 +192,173 @@ img {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
 .back-button:hover {
   background-color: #ddd;
 }
 
-/* CSS Links */
-
+/* Perfil e links */
 .profile__container {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   list-style: none;
-  flex-flow: column;
-  padding: 0 20px; /* Add horizontal padding for mobile */
-  position: relative;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+}
+.profile__container li {
   width: 100%;
-  box-sizing: border-box;
 }
-
-.profile__container.active {
-  max-height: 953px;
-}
-
 .profile__image {
   width: 60%;
-  min-width: 120px; /* Ensure minimum size */
-  max-width: 600px; /* Prevent too large on desktop */
-  object-fit: cover;
+  min-width: 120px;
+  max-width: 600px;
   border-radius: 50%;
+  object-fit: cover;
 }
-
 .profile__links {
-  font-size: 1rem;
-  font-weight: bold;
-  background: var(--color-disable);
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 20px;
   padding: 20px;
-  border-radius: 10px;
+  background: var(--color-disable);
   color: var(--color-primary);
   text-decoration: none;
-  margin-bottom: 20px;
-  display: block;
-  width: 600px; /* Fixed width for consistent sizing */
-  max-width: calc(100vw - 40px); /* Responsive max-width with padding */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  box-sizing: border-box;
-  text-align: center;
+  font-weight: bold;
   border: 1px solid white;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
-
 .profile__links:hover {
   background: var(--color-secondary);
-  padding: 20px;
-  display: inline-block;
-  border-radius: 10px;
-  color: var(--color-primary);
-  text-decoration: none;
-  margin-bottom: 20px;
-  transition: 0.5s;
   border: 1px dashed white;
+  transition: 0.5s;
 }
 
+/* Títulos e legendas */
 .title {
   text-transform: uppercase;
-  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: bolder;
   margin: 20px 0;
 }
-
 .subtitle {
-  font-size: clamp(0.9rem, 3vw, 1rem); /* Responsive font size */
+  font-size: clamp(0.9rem, 3vw, 1rem);
   font-weight: 400;
   color: var(--color-primary);
   margin: 10px 0;
 }
 
-/* Mobile-specific styles */
+/* Mobile */
 @media screen and (max-width: 980px) {
-  body {
-    box-sizing: border-box;
-    max-width: 100%;
-    padding-bottom: 30px;
+  /* Ocultar links e mostrar ícone centrado */
+  .topbar a:not(.icon) {
+    display: none;
+  }
+  .topbar .icon {
+    display: block;
   }
 
+  /* Menu expandido */
+  .topbar.responsive {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+  .topbar.responsive a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  /* Ajustes gerais mobile */
+  body {
+    padding: 0 0.75rem 30px;
+  }
+  .main {
+    padding: 80px 0.75rem 0;
+    font-size: 1rem;
+  }
+  .image-mosaic {
+    column-width: 150px;
+  }
   .profile__container {
     padding: 0 15px;
   }
-
   .profile__image {
-    width: 30%;
+    width: 40%;
     min-width: 100px;
     max-width: 150px;
   }
-
   .profile__links {
     font-size: 0.9rem;
     padding: 15px;
     margin-bottom: 15px;
   }
-
-  .profile__links:hover {
-    padding: 15px;
-  }
-
   .title {
-    box-sizing: border-box;
     font-size: clamp(1.5rem, 6vw, 2.5rem);
     margin: 15px 0;
   }
-
   .subtitle {
-    box-sizing: border-box;
     font-size: clamp(0.8rem, 4vw, 0.9rem);
     margin: 8px 0;
   }
 }
+.topbar .icon {
+  display: block;
+}
+.topbar.responsive {
+  position: relative;
+  flex-direction: column;
+  padding-top: 60px;
+  background-color: #171a21;
+  z-index: 2;
+}
+.topbar.responsive a {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  border-bottom: 1px solid #2a2a2a;
+  text-align: left;
+}
+body {
+  padding: 0 0.75rem 30px;
+}
+.main {
+  padding: 80px 0.75rem 0;
+  font-size: 1rem;
+}
+.image-mosaic {
+  column-width: 150px;
+}
+.profile__container {
+  padding: 0 15px;
+}
+.profile__image {
+  width: 40%;
+  min-width: 100px;
+  max-width: 150px;
+}
+.profile__links {
+  font-size: 0.9rem;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.title {
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  margin: 15px 0;
+}
+.subtitle {
+  font-size: clamp(0.8rem, 4vw, 0.9rem);
+  margin: 8px 0;
+}
 
+/* Cores globais */
 :root {
   --color-dark: #2f3e46;
   --color-primary: #cad2c5;
-  --color-disable: #000000;
-  --color-alternative: #cad2c5;
+  --color-disable: #000;
   --color-secondary: #354f52;
   --color-blue: #0b4ca1;
 }
