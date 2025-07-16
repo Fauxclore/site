@@ -55,26 +55,16 @@ a:visited {
   padding: 0 20px;
   background-color: #171a21;
   color: #dad7cd;
-  z-index: 1;
-  overflow-x: auto;
+  overflow: hidden;
 }
 
-/* Avatar posicionado na barra superior */
-.avatar-container {
-  display: flex;
-  align-items: center;
-  margin-right: 30px;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
+.topbar .icon {
+  display: none;
 }
 
 /* Links na barra superior */
 .topbar a {
+  float: left;
   margin: 0 15px;
   padding: 6px 8px;
   text-decoration: none;
@@ -84,6 +74,7 @@ a:visited {
 }
 
 .topbar a:hover {
+  background-color: black;
   color: white;
 }
 
@@ -170,6 +161,32 @@ img {
 @media screen and (min-width: 768px) {
   .image-mosaic {
     column-width: 320px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topbar a:not(:first-child) {
+    display: none;
+  }
+  .topbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topbar.responsive {
+    position: relative;
+  }
+  .topbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
   }
 }
 

@@ -8,18 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <div class="topbar">
-      <div class="avatar-container">
-        <a href="/index.html"
-          ><img src="/img/avatar.webp" alt="Avatar" class="avatar"
-        /></a>
-      </div>
+    <div class="topbar" id="myTopnav">
+      <a href="/index.html">Página Inicial</a>
       <a href="/musica/index.html">Música</a>
       <a href="/objetos/index.html">Objetos Sonoros</a>
       <a href="/projetos-participativos/index.html">Projetos Participativos</a>
@@ -27,6 +27,9 @@
       <a href="/investigacao/index.html">Investigação</a>
       <a href="/links/index.html">Links/Contactos</a>
       <!--       <a href="/radio/index.html">Rádio</a> -->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i
+      ></a>
     </div>
     <div class="main-posts">
       <button onclick="history.back()" class="back-button">← Voltar</button>
@@ -40,5 +43,15 @@
 <p>O título “Postais” evoca o postal como símbolo de transmissão de mensagens, servindo de metáfora para a comunicação e para o potencial dos objetos artísticos de ultrapassarem a sua forma física e transmitirem múltiplos significados. Esta ideia surgiu da constatação de que os dois grupos trabalhavam em separado mas em paralelo, e que, apesar da proximidade geográfica, Fátima e Ourém são cidades distintas. Os postais representam, assim, não só a comunicação, mas também a capacidade dos objetos artísticos de refletirem significados complexos, tal como as duas faces de um postal revelam ou imagem ou texto. Através deste meio, o projeto conseguiu aproximar duas comunidades inicialmente desconhecidas entre si, que acabaram por estabelecer laços e relações através da música.</p>
 </main>
     </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "topbar";
+        }
+      }
+    </script>
   </body>
 </html>
