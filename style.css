@@ -92,16 +92,6 @@ a:visited {
 .main-posts {
   padding-top: 80px; /* altura da topbar + margem */
 }
-/* Media query para ecrãs muito baixos */
-@media screen and (max-height: 450px) {
-  .topbar {
-    height: 50px;
-    padding: 0 15px;
-  }
-  .topbar a {
-    font-size: 0.9rem;
-  }
-}
 
 .main-base {
   margin: 0 auto;
@@ -159,13 +149,25 @@ img {
   display: block;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 768px) {
   .image-mosaic {
+    margin-left: 10px;
+    margin-right: 10px;
     column-width: 200px;
+  }
+  .main-base {
+    margin-left: 10px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+  }
+  .main-posts {
+    box-sizing: border-box;
+    font-size: 1rem;
   }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 768px) {
   .image-mosaic {
     column-width: 320px;
   }
@@ -318,6 +320,8 @@ img {
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
   body {
+    box-sizing: border-box;
+    max-width: 100%;
     padding-bottom: 30px;
   }
 
@@ -342,36 +346,15 @@ img {
   }
 
   .title {
+    box-sizing: border-box;
     font-size: clamp(1.5rem, 6vw, 2.5rem);
     margin: 15px 0;
   }
 
   .subtitle {
+    box-sizing: border-box;
     font-size: clamp(0.8rem, 4vw, 0.9rem);
     margin: 8px 0;
-  }
-}
-
-/* Extra small screens */
-@media screen and (max-width: 480px) {
-  .profile__container {
-    padding: 0 10px;
-  }
-
-  .profile__image {
-    width: 35%;
-    min-width: 80px;
-    max-width: 120px;
-  }
-
-  .profile__links {
-    font-size: 0.85rem;
-    padding: 12px;
-    margin-bottom: 12px;
-  }
-
-  .profile__links:hover {
-    padding: 12px;
   }
 }
 
