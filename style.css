@@ -305,54 +305,6 @@ img {
     margin: 8px 0;
   }
 }
-.topbar .icon {
-  display: block;
-}
-.topbar.responsive {
-  position: relative;
-  flex-direction: column;
-  padding-top: 60px;
-  background-color: #171a21;
-  z-index: 2;
-}
-.topbar.responsive a {
-  display: block;
-  width: 100%;
-  padding: 12px 20px;
-  border-bottom: 1px solid #2a2a2a;
-  text-align: left;
-}
-body {
-  padding: 0 0.75rem 30px;
-}
-.main {
-  padding: 80px 0.75rem 0;
-  font-size: 1rem;
-}
-.image-mosaic {
-  column-width: 150px;
-}
-.profile__container {
-  padding: 0 15px;
-}
-.profile__image {
-  width: 40%;
-  min-width: 100px;
-  max-width: 150px;
-}
-.profile__links {
-  font-size: 0.9rem;
-  padding: 15px;
-  margin-bottom: 15px;
-}
-.title {
-  font-size: clamp(1.5rem, 6vw, 2.5rem);
-  margin: 15px 0;
-}
-.subtitle {
-  font-size: clamp(0.8rem, 4vw, 0.9rem);
-  margin: 8px 0;
-}
 
 /* Cores globais */
 :root {
