@@ -306,6 +306,12 @@ img {
   }
 }
 
+audio {
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
 /* Cores globais */
 :root {
   --color-dark: #2f3e46;
