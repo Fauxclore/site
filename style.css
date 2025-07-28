@@ -133,10 +133,14 @@ img {
 
 /* Post mosaic (masonry usando colunas) */
 .post-mosaic {
-  column-width: 25rem;
+  column-width: 18rem;
   column-gap: 0.5rem;
   margin: 0 auto 2rem;
   padding: 0 1rem;
+  width: 100vw; /* Full viewport width */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* Center it */
 }
 
 .post-container {
