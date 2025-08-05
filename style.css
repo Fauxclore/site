@@ -145,6 +145,14 @@ img {
   height: auto;
 }
 
+.topbar img {
+  width: 20px;
+  max-width: 24px;
+  height: auto;
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+}
 /* Mosaic de imagens (masonry usando colunas) */
 .image-mosaic {
   column-width: 250px;
