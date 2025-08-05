@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alfabetário</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="topbar" id="myTopnav">
+  <a href="/en/index.html">Homepage</a>
+  <a href="/en/musica/index.html">Music</a>
+  <a href="/en/objetos/index.html">Sound Objects</a>
+  <a href="/en/projetos-participativos/index.html">Participative Projects</a>
+  <a href="/en/workshops/index.html">Workshops</a>
+  <a href="/en/investigacao/index.html">Research</a>
+  <!-- <a href="/blog/index.html">Blog</a> -->
+  <a href="/en/links/index.html">Links/Contacts</a>
+  <a href="/objetos/alfabetario/">
+    <img src="/img/pt.webp" alt="" />
+  </a>
+  <!--       <a href="/radio/index.html">Rádio</a> -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i
+  ></a>
+</div>
+
+    <div class="main">
+      <button onclick="history.back()" class="back-button">← Voltar</button>
+      <h1>Alfabetário</h1>
+      
+      <img src="/img/os_alfabetario.webp" alt="Alfabetário" />
+      
+      <main><p>Alfabetário is software developed in MaxMSP that transforms text typed on a computer keyboard into projected typographic paintings and soundscapes created from recordings of the alphabet in various languages and intonations.</p>
+<p>In addition to allowing the creation of typographic compositions, such as the image above, Alfabetário algorithmically generates a poem at the end of its use, incorporating all the words entered in previous interactions. An example can be found below.</p>
+<p>In workshops, Alfabetário promotes the literal and metaphorical deconstruction of words, exploring their semantic content and musicality.</p>
+<p>Developed in 2022.</p>
+</main>
+    </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "topbar";
+        }
+      }
+    </script>
+  </body>
+</html>

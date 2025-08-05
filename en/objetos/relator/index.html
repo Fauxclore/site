@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relator</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="topbar" id="myTopnav">
+  <a href="/index.html">Página Inicial</a>
+  <a href="/musica/index.html">Música</a>
+  <a href="/objetos/index.html">Objetos Sonoros</a>
+  <a href="/projetos-participativos/index.html">Projetos Participativos</a>
+  <a href="/workshops/index.html">Workshops</a>
+  <a href="/investigacao/index.html">Investigação</a>
+  <!-- <a href="/blog/index.html">Blog</a> -->
+  <a href="/links/index.html">Links/Contactos</a>
+   <a href="/en/en/objetos/relator/">
+    <img src="/img/uk.webp" alt="" />
+  </a>
+</a>
+  <!--       <a href="/radio/index.html">Rádio</a> -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i
+  ></a>
+</div>
+
+    <div class="main">
+      <button onclick="history.back()" class="back-button">← Voltar</button>
+      <h1>Relator</h1>
+      
+      <img src="/img/os_relatorio.webp" alt="Relator" />
+      
+      <main><p>This sound object, developed in collaboration with the <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> in 2024, plays a story when you lift the headset. Designed for the installation Mural da História Comum, part of the Big Bang festival at the Centro Cultural de Belém, the object was programmed to play a specific audio in the installation, activated by lifting the headset. However, its programming allows the dialling disc to select between different audios if necessary.</p>
+<p>The object maintains the original structure of the telephone, integrating an Arduino into the electronic system to allow listening via the original handset itself.</p>
+<p>Photo courtesy of Elsa Arrais.</p>
+</main>
+    </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "topbar";
+        }
+      }
+    </script>
+  </body>
+</html>

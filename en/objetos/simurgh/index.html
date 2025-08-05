@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simurgh</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="topbar" id="myTopnav">
+  <a href="/en/index.html">Homepage</a>
+  <a href="/en/musica/index.html">Music</a>
+  <a href="/en/objetos/index.html">Sound Objects</a>
+  <a href="/en/projetos-participativos/index.html">Participative Projects</a>
+  <a href="/en/workshops/index.html">Workshops</a>
+  <a href="/en/investigacao/index.html">Research</a>
+  <!-- <a href="/blog/index.html">Blog</a> -->
+  <a href="/en/links/index.html">Links/Contacts</a>
+  <a href="/objetos/simurgh/">
+    <img src="/img/pt.webp" alt="" />
+  </a>
+  <!--       <a href="/radio/index.html">Rádio</a> -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i
+  ></a>
+</div>
+
+    <div class="main">
+      <button onclick="history.back()" class="back-button">← Voltar</button>
+      <h1>Simurgh</h1>
+      
+      <img src="/img/os_simurgh.webp" alt="Simurgh" />
+      
+      <main><p>Inspired by the work The Conference of the Birds by the poet Farid ud-Din Attar (12th century), Simurgh is an interactive mask that evokes the objects used in harvest rites and celebrations of the arrival of summer.</p>
+<p>This bird mask has mouldable features that influence the sound it makes. Drawing different expressions on the eyebrows changes the sound content generated via a keyboard hidden under the feathers. Interaction with the mask invites the user to adopt a posture that satirically imitates the wings of a bird. The beak is also adjustable: when open, the sound consists of a synthesised bird song; when closed, the mask emits recordings ranging from birdsong to the industrial sounds of a metalworks in operation.</p>
+<p>Developed in 2023, Simurgh made its debut at a performance for babies in Loulé.</p>
+</main>
+    </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "topbar";
+        }
+      }
+    </script>
+  </body>
+</html>

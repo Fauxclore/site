@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simurgh</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="topbar" id="myTopnav">
+  <a href="/index.html">Página Inicial</a>
+  <a href="/musica/index.html">Música</a>
+  <a href="/objetos/index.html">Objetos Sonoros</a>
+  <a href="/projetos-participativos/index.html">Projetos Participativos</a>
+  <a href="/workshops/index.html">Workshops</a>
+  <a href="/investigacao/index.html">Investigação</a>
+  <!-- <a href="/blog/index.html">Blog</a> -->
+  <a href="/links/index.html">Links/Contactos</a>
+  <!--       <a href="/radio/index.html">Rádio</a> -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i
+  ></a>
+</div>
+
+    <div class="main">
+      <button onclick="history.back()" class="back-button">← Voltar</button>
+      <h1>Simurgh</h1>
+      
+      <img src="/img/os_simurgh.webp" alt="Simurgh" />
+      
+      <main><p>Inspirado na obra A Conferência dos Pássaros do poeta Farid ud-Din Attar (século XII), Simurgh é uma máscara interativa que evoca os objetos utilizados em ritos de colheita e celebrações da chegada do verão.</p>
+<p>Esta máscara de pássaro tem feições moldáveis que influenciam o som que emite. Ao desenhar diferentes expressões nas sobrancelhas, altera-se o conteúdo sonoro gerado através de um teclado oculto sob as penas. A interação com a máscara convida o utilizador a adotar uma postura que, de forma satírica, imita as asas de uma ave. O bico é também ajustável: quando aberto, o som consiste num canto de pássaro sintetizado; ao fechá-lo, a máscara emite gravações que vão do canto de pássaros a sons industriais de uma metalurgia em funcionamento.</p>
+<p>Desenvolvido em 2023, Simurgh estreou-se numa performance para bebés em Loulé.</p>
+</main>
+    </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "topbar";
+        }
+      }
+    </script>
+  </body>
+</html>

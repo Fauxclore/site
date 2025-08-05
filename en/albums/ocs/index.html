@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orquestra Coreográfica do Selvagem</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="topbar" id="myTopnav">
+  <a href="/en/index.html">Homepage</a>
+  <a href="/en/musica/index.html">Music</a>
+  <a href="/en/objetos/index.html">Sound Objects</a>
+  <a href="/en/projetos-participativos/index.html">Participative Projects</a>
+  <a href="/en/workshops/index.html">Workshops</a>
+  <a href="/en/investigacao/index.html">Research</a>
+  <!-- <a href="/blog/index.html">Blog</a> -->
+  <a href="/en/links/index.html">Links/Contacts</a>
+  <a href="/albums/ocs/">
+    <img src="/img/pt.webp" alt="" />
+  </a>
+  <!--       <a href="/radio/index.html">Rádio</a> -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i
+  ></a>
+</div>
+
+    <div class="main">
+      <button onclick="history.back()" class="back-button">← Voltar</button>
+      <h1>Orquestra Coreográfica do Selvagem</h1>
+      <main><audio controls>
+  <source src="/music/ocs_fauno.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<p>In 2025, I had the pleasure and privilege of collaborating with <a href="https://www.instagram.com/ordemdoo/">Ordem do Ó</a> in developing sound design for their ballets.
+The one referred to in this article was called Orquestra Coreográfica do Selvagem (Choreographic Orchestra of the Savage). Part of what made this ballet so interesting was the fact that it was a community project, involving amateur dancers alongside a team of professional dancers.
+For this ballet, I sought to base most of my composition on field recordings made during rehearsals. Ideally, I would not have used any sounds other than those recorded by me, but I had to make an exception for some timbres that I felt were missing. However, I feel that, in general, all the pieces share something ‘analogue’ between them, emerging from being constructed on the basis of sounds emitted by the same people, recorded in the same space, the amazing clearing in the Monsanto National Forest.
+The following song is an example of something built solely from recordings of the participants, slightly edited and layered to create textures and timbres that are equally organic, animalistic and ethereal. It is called Louva-Deus:</p>
+<audio controls>
+  <source src="/music/ocs_louva.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<p>I was also able to return to composing more rhythmic music, using polyrhythmic overlays. In this case, I drew inspiration from Guinean rhythms, which I was able to record through one of the participating dancers, Anália. That is also the name of the song:</p>
+ <audio controls>
+  <source src="/music/ocs_analia.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+</main>
+    </div>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "topbar";
+        }
+      }
+    </script>
+  </body>
+</html>

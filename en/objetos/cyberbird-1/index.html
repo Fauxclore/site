@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberBird 1.0</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="topbar" id="myTopnav">
+  <a href="/en/index.html">Homepage</a>
+  <a href="/en/musica/index.html">Music</a>
+  <a href="/en/objetos/index.html">Sound Objects</a>
+  <a href="/en/projetos-participativos/index.html">Participative Projects</a>
+  <a href="/en/workshops/index.html">Workshops</a>
+  <a href="/en/investigacao/index.html">Research</a>
+  <!-- <a href="/blog/index.html">Blog</a> -->
+  <a href="/en/links/index.html">Links/Contacts</a>
+  <a href="/objetos/cyberbird-1/">
+    <img src="/img/pt.webp" alt="" />
+  </a>
+  <!--       <a href="/radio/index.html">Rádio</a> -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i
+  ></a>
+</div>
+
+    <div class="main">
+      <button onclick="history.back()" class="back-button">← Voltar</button>
+      <h1>CyberBird 1.0</h1>
+      
+      <img src="/img/os_cb1.webp" alt="CyberBird 1.0" />
+      
+      <main><p>In a world where fewer and fewer real birds fly over our daily lives, CyberBird 1.0 is here to fill that void, replacing natural birdsong with artificial responses. As a commentary on the human need to control our surroundings, CyberBird 1.0 sings only in response to the song we sing to it. What's more, it doesn't leave rubbish behind or build nests on the edges of houses.
+At its premiere, it was presented in a lyrical interaction with singer Maria Pavonis.</p>
+<p>CyberBird 1.0 consists of software developed in PureData, which receives sound from a microphone connected to a Raspberry Pi, processes it and responds with an artificial song that imitates the rhythm and melodic contour of the sound it receives.</p>
+<p>In addition to this performative and satirical context, it also has applications in workshops with people who are not musically literate, allowing them to create a creative and musical dialogue with an interactive object.</p>
+<p>Developed in 2019, in partnership with <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, which holds the image rights to the photos included here.</p>
+</main>
+    </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "topbar";
+        }
+      }
+    </script>
+  </body>
+</html>

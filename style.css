@@ -133,6 +133,8 @@ figcaption {
   min-height: 100vh;
   font-size: 1.1rem;
   box-sizing: border-box;
+  word-break: normal;
+  hyphens: auto;
 }
 
 /* Imagens fluidas */
