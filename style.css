@@ -4,7 +4,9 @@
 *::after {
   box-sizing: border-box;
 }
-
+hr {
+  border: 1px solid white;
+}
 /* Corpo da página */
 body {
   margin: 0;
@@ -24,14 +26,28 @@ h1 {
 h2,
 h3 {
   text-align: center;
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  margin: 100px auto 0;
+  font-size: 2rem;
+  padding: 0;
+  margin: 1.5rem;
+  font-style: italic;
 }
 h4 {
+  padding: 0;
+  margin: 2rem;
   text-align: center;
   font-size: clamp(2rem, 6vw, 3rem);
-  margin: 20px auto;
-  padding: 50px 0;
+}
+h5 {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: lighter;
+}
+h6 {
+  margin: 1.5rem;
+  padding: 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 /* Iframes centrados */
@@ -41,12 +57,40 @@ iframe {
   margin: 0 auto;
 }
 
-/* Links */
-a,
-a:visited {
-  color: #b6cec2;
+/* Title Links */
+a.title-link,
+a.title-link:visited {
+  color: #dda15e;
+  text-decoration: none;
 }
-
+a.text-link,
+a.text-link:visited {
+  background: linear-gradient(120deg, #f94d50 0%, #f94d50 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-position: 0 90%;
+}
+a.text-link:hover {
+  background: linear-gradient(120deg, #f94d50 0%, #f94d50 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: 0.2s;
+}
+/* Text Links */
+a,
+a:visited,
+a:hover {
+  color: #dad7cd;
+  text-decoration: none;
+  background-color: transparent;
+}
+figcaption {
+  font-size: 1rem;
+  font-style: italic;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
 /* Topbar */
 .topbar {
   position: fixed;
@@ -155,6 +199,11 @@ img {
   object-fit: cover;
   display: block;
 }
+.blog-img {
+  box-sizing: border-box;
+  width: 80%;
+  display: block;
+}
 .post-info {
   position: absolute;
   inset: 0;
@@ -183,6 +232,15 @@ img {
   text-align: justify;
   hyphens: auto;
   word-wrap: break-word;
+}
+.blog-slug {
+  margin: 1.5rem;
+  font-size: 1rem;
+  opacity: 0.9;
+  text-align: center;
+  hyphens: auto;
+  word-wrap: break-word;
+  box-sizing: border-box;
 }
 
 /* Botão “voltar” */
