@@ -24,7 +24,7 @@
         }
         .bird {
             position: absolute;
-            width: clamp(50px, 10vw, 100px); /* Responsive bird size */
+            width: clamp(50px, 10vw, 100px);
             height: auto;
             aspect-ratio: 1 / 1;
             cursor: pointer;
@@ -64,13 +64,10 @@
             }
             
             init() {
-                // Set random background
                 this.setRandomBackground();
                 
-                // Create birds
                 this.createBirds();
                 
-                // Add resize listener with debounce
                 this.addResizeListener();
             }
             
@@ -108,16 +105,13 @@
                     attempts++;
                 }
                 
-                // Fallback if no valid position found
                 return { x: `${this.margin}px`, y: `${this.margin}px` };
             }
             
             createBirds() {
-                // Clear existing birds
                 this.positions = [];
                 document.querySelectorAll('.bird').forEach(bird => bird.remove());
                 
-                // Create new birds
                 this.birds.forEach((birdData) => {
                     const img = document.createElement('img');
                     img.src = birdData.src;
@@ -130,7 +124,6 @@
                     
                     img.addEventListener('click', () => this.blinkBird(img, birdData.name));
                     
-                    // Add error handling for image loading
                     img.addEventListener('error', () => {
                         console.error(`Failed to load image: ${birdData.src}`);
                         img.style.display = 'none';
@@ -169,7 +162,6 @@
             }
         }
         
-        // Initialize the app when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
             new CyberBirdApp();
         });
