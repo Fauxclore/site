@@ -12,8 +12,8 @@ body {
   margin: 0;
   padding: 0 1rem 150px;
   font-family: "DM Mono", monospace;
-  background-color: #344e41;
-  color: #dad7cd;
+  background-color: #111111;
+  color: #ddddbb;
   text-align: justify;
 }
 
@@ -80,7 +80,7 @@ a.text-link:hover {
 a,
 a:visited,
 a:hover {
-  color: #dad7cd;
+  color: #ddddbb;
   text-decoration: none;
   background-color: transparent;
 }
@@ -102,8 +102,8 @@ figcaption {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  background-color: #171a21;
-  color: #dad7cd;
+  background-color: #111111;
+  color: #ddddbb;
   z-index: 999;
   flex-wrap: wrap;
 }
@@ -259,7 +259,7 @@ img {
   padding: 0.5rem 1rem;
   font-family: "DM Mono", monospace;
   font-size: 1.5rem;
-  background-color: #eee;
+  background-color: #ddddbb;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -419,8 +419,8 @@ audio {
 }
 /* Cores globais */
 :root {
-  --color-dark: #2f3e46;
-  --color-primary: #cad2c5;
+  --color-dark: #111111;
+  --color-primary: #ddddbb;
   --color-disable: #000;
   --color-secondary: #354f52;
   --color-blue: #0b4ca1;
