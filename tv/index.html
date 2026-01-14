@@ -2,7 +2,7 @@
 <html lang="pt">
   <head>
     <meta charset="utf-8" />
-    <title>TV</title>
+    <title>Archive Frame</title>
     <style>
       html,
       body {
@@ -26,6 +26,7 @@
 
     <script>
       const player = document.getElementById("player");
+      let loading = false;
 
       async function getRandomVideoURL() {
         const page = Math.floor(Math.random() * 500) + 1;
@@ -34,7 +35,7 @@
           "https://archive.org/advancedsearch.php" +
           "?q=mediatype:(movies)" +
           "&fl[]=identifier" +
-          "&rows=1" +
+          "&rows=5" +
           "&page=" +
           page +
           "&output=json";
@@ -42,31 +43,36 @@
         const searchRes = await fetch(searchURL);
         const searchData = await searchRes.json();
 
-        if (!searchData.response.docs.length) throw "sem resultados";
+        for (const doc of searchData.response.docs) {
+          const id = doc.identifier;
+          const metaRes = await fetch(`https://archive.org/metadata/${id}`);
+          const metaData = await metaRes.json();
 
-        const id = searchData.response.docs[0].identifier;
-        const metaURL = `https://archive.org/metadata/${id}`;
+          const file = metaData.files.find(
+            (f) => f.format === "MPEG4" && f.name.endsWith(".mp4")
+          );
 
-        const metaRes = await fetch(metaURL);
-        const metaData = await metaRes.json();
+          if (file) {
+            return `https://archive.org/download/${id}/${file.name}`;
+          }
+        }
 
-        const file = metaData.files.find(
-          (f) => f.format === "MPEG4" && f.name.endsWith(".mp4")
-        );
-
-        if (!file) throw "sem mp4";
-
-        return `https://archive.org/download/${id}/${file.name}`;
+        throw "nenhum mp4 válido";
       }
 
       async function playOnce() {
+        if (loading) return;
+        loading = true;
+
         try {
           const url = await getRandomVideoURL();
           player.src = url;
           player.load();
           await player.play();
         } catch (e) {
-          setTimeout(playOnce, 500);
+          setTimeout(playOnce, 1000);
+        } finally {
+          loading = false;
         }
       }
 
