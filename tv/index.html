@@ -13,70 +13,49 @@
         height: 100%;
         overflow: hidden;
       }
-      video {
+      iframe {
         width: 100vw;
         height: 100vh;
-        object-fit: contain;
+        border: 0;
         background: black;
       }
     </style>
   </head>
   <body>
-    <video id="player" autoplay muted playsinline></video>
+    <iframe id="player" allow="autoplay" allowfullscreen> </iframe>
 
     <script>
       const player = document.getElementById("player");
-      let loading = false;
 
-      async function getRandomVideoURL() {
+      async function getRandomIdentifier() {
         const page = Math.floor(Math.random() * 500) + 1;
 
-        const searchURL =
+        const url =
           "https://archive.org/advancedsearch.php" +
           "?q=mediatype:(movies)" +
           "&fl[]=identifier" +
-          "&rows=5" +
+          "&rows=1" +
           "&page=" +
           page +
           "&output=json";
 
-        const searchRes = await fetch(searchURL);
-        const searchData = await searchRes.json();
+        const res = await fetch(url);
+        const data = await res.json();
 
-        for (const doc of searchData.response.docs) {
-          const id = doc.identifier;
-          const metaRes = await fetch(`https://archive.org/metadata/${id}`);
-          const metaData = await metaRes.json();
-
-          const file = metaData.files.find(
-            (f) => f.format === "MPEG4" && f.name.endsWith(".mp4")
-          );
-
-          if (file) {
-            return `https://archive.org/download/${id}/${file.name}`;
-          }
-        }
-
-        throw "nenhum mp4 válido";
+        if (!data.response.docs.length) throw "sem resultados";
+        return data.response.docs[0].identifier;
       }
 
-      async function playOnce() {
-        if (loading) return;
-        loading = true;
-
+      async function loadVideo() {
         try {
-          const url = await getRandomVideoURL();
-          player.src = url;
-          player.load();
-          await player.play();
-        } catch (e) {
-          setTimeout(playOnce, 1000);
-        } finally {
-          loading = false;
+          const id = await getRandomIdentifier();
+          player.src = `https://archive.org/embed/${id}?autoplay=1`;
+        } catch {
+          setTimeout(loadVideo, 1000);
         }
       }
 
-      playOnce();
+      loadVideo();
     </script>
   </body>
 </html>
