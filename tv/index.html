@@ -2,7 +2,7 @@
 <html lang="pt">
   <head>
     <meta charset="utf-8" />
-    <title>Archive Stream</title>
+    <title>TV</title>
     <style>
       html,
       body {
@@ -28,7 +28,6 @@
       const player = document.getElementById("player");
 
       async function getRandomVideoURL() {
-        // página aleatória (1–500 é suficiente para espalhar bem)
         const page = Math.floor(Math.random() * 500) + 1;
 
         const searchURL =
@@ -60,23 +59,18 @@
         return `https://archive.org/download/${id}/${file.name}`;
       }
 
-      async function playNext() {
+      async function playOnce() {
         try {
           const url = await getRandomVideoURL();
           player.src = url;
           player.load();
           await player.play();
         } catch (e) {
-          // falhou → tenta outro silenciosamente
-          setTimeout(playNext, 500);
+          setTimeout(playOnce, 500);
         }
       }
 
-      player.addEventListener("ended", playNext);
-      player.addEventListener("error", playNext);
-
-      // arranque inicial
-      playNext();
+      playOnce();
     </script>
   </body>
 </html>
