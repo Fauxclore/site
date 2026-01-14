@@ -2,60 +2,159 @@
 <html lang="pt">
   <head>
     <meta charset="utf-8" />
-    <title>Archive Frame</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Archive Random Frame</title>
     <style>
+      :root {
+        background: #000;
+      }
       html,
       body {
-        margin: 0;
-        padding: 0;
-        background: black;
-        width: 100%;
         height: 100%;
-        overflow: hidden;
+        margin: 0;
+        background: #000;
       }
-      iframe {
+      #wrap {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* iframe ocupa todo o ecrã (mantém ratio do player) */
+      iframe#player {
         width: 100vw;
         height: 100vh;
         border: 0;
-        background: black;
+        background: #000;
+        display: block;
+      }
+      /* camada por cima para impedir interação do utilizador */
+      #blocker {
+        position: fixed;
+        inset: 0;
+        z-index: 2;
+        /* capturar eventos para impedir qualquer clique no iframe */
+        cursor: default;
+        /* deixa transparente visualmente */
+        background: transparent;
+      }
+      /* pequeno fallback / estado */
+      #status {
+        position: fixed;
+        left: 12px;
+        bottom: 12px;
+        color: #ddd;
+        font-family: system-ui, Segoe UI, Roboto, Arial;
+        font-size: 12px;
+        z-index: 3;
+        background: rgba(0, 0, 0, 0.45);
+        padding: 6px 8px;
+        border-radius: 6px;
       }
     </style>
   </head>
   <body>
-    <iframe id="player" allow="autoplay" allowfullscreen> </iframe>
+    <div id="wrap">
+      <iframe
+        id="player"
+        allow="autoplay; fullscreen"
+        sandbox="allow-same-origin allow-scripts allow-popups"
+      ></iframe>
+      <div id="blocker" title="Conteúdo não interactivo"></div>
+      <div id="status">a carregar vídeo aleatório…</div>
+    </div>
 
     <script>
-      const player = document.getElementById("player");
+      (async function () {
+        const player = document.getElementById("player");
+        const status = document.getElementById("status");
 
-      async function getRandomIdentifier() {
-        const page = Math.floor(Math.random() * 500) + 1;
+        // controla tentativas para não sobrecarregar a API
+        let attempts = 0;
+        const MAX_ATTEMPTS = 6;
 
-        const url =
-          "https://archive.org/advancedsearch.php" +
-          "?q=mediatype:(movies)" +
-          "&fl[]=identifier" +
-          "&rows=1" +
-          "&page=" +
-          page +
-          "&output=json";
+        // pede N resultados e escolhe um aleatório (mais robusto que rows=1)
+        async function randomIdentifier() {
+          const page = Math.floor(Math.random() * 500) + 1; // espalha a busca
+          const rows = 20;
 
-        const res = await fetch(url);
-        const data = await res.json();
+          const q = encodeURIComponent("mediatype:(movies)");
+          const url = `https://archive.org/advancedsearch.php?q=${q}&fl[]=identifier&rows=${rows}&page=${page}&output=json`;
 
-        if (!data.response.docs.length) throw "sem resultados";
-        return data.response.docs[0].identifier;
-      }
+          const res = await fetch(url);
+          if (!res.ok) throw new Error("search-fail");
+          const data = await res.json();
+          const docs = (data.response && data.response.docs) || [];
+          if (!docs.length) throw new Error("no-results");
 
-      async function loadVideo() {
-        try {
-          const id = await getRandomIdentifier();
-          player.src = `https://archive.org/embed/${id}?autoplay=1`;
-        } catch {
-          setTimeout(loadVideo, 1000);
+          // escolhe um identifier aleatório do lote
+          const idx = Math.floor(Math.random() * docs.length);
+          return docs[idx].identifier;
         }
-      }
 
-      loadVideo();
+        // constrói a URL embed recomendada
+        function embedUrl(identifier) {
+          // autoplay tenta forçar inicio; o player do IA respeita autoplay quando permitido pelo browser
+          // podes adicionar outros parâmetros à query se quiseres (ex.: playlist, start, etc.)
+          return `https://archive.org/embed/${encodeURIComponent(
+            identifier
+          )}?autoplay=1`;
+        }
+
+        // ciclo de tentativa com backoff simples
+        async function loadRandomEmbed() {
+          attempts++;
+          status.textContent = `a tentar carregar (tentativa ${attempts}/${MAX_ATTEMPTS})…`;
+
+          try {
+            const id = await randomIdentifier();
+            const url = embedUrl(id);
+            // única mudança do src após termos a id
+            player.src = url;
+            status.textContent = ""; // ocultar mensagem quando o iframe começa a carregar
+          } catch (err) {
+            if (attempts < MAX_ATTEMPTS) {
+              const delay = 800 * attempts;
+              status.textContent = `falha a obter vídeo — a tentar novamente em ${Math.round(
+                delay / 1000
+              )}s…`;
+              await new Promise((r) => setTimeout(r, delay));
+              return loadRandomEmbed();
+            } else {
+              status.textContent = "não foi possível carregar nenhum vídeo.";
+              console.error("archive-random failed", err);
+            }
+          }
+        }
+
+        // Timeout: se o embed não carregar em X s, tentamos outro
+        const LOAD_TIMEOUT_MS = 12000;
+        let loadTimer = null;
+        function startLoadWatch() {
+          clearTimeout(loadTimer);
+          loadTimer = setTimeout(() => {
+            // tenta um novo vídeo (se ainda tivermos tentativas)
+            if (attempts < MAX_ATTEMPTS) {
+              console.warn("embed load timeout — troca de vídeo");
+              loadRandomEmbed();
+            } else {
+              status.textContent = "timeout ao carregar (sem mais tentativas).";
+            }
+          }, LOAD_TIMEOUT_MS);
+        }
+
+        // quando o iframe "carrega" (evento load), limpamos o timer
+        player.addEventListener("load", () => {
+          clearTimeout(loadTimer);
+          status.textContent = ""; // remove qualquer texto de status
+        });
+
+        // inicia
+        startLoadWatch();
+        loadRandomEmbed();
+      })();
     </script>
   </body>
 </html>
