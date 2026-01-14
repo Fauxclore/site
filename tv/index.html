@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <title>Archive Stream</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: black;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: contain;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="player" autoplay muted playsinline></video>
+
+    <script>
+      const player = document.getElementById("player");
+
+      async function getRandomVideoURL() {
+        // página aleatória (1–500 é suficiente para espalhar bem)
+        const page = Math.floor(Math.random() * 500) + 1;
+
+        const searchURL =
+          "https://archive.org/advancedsearch.php" +
+          "?q=mediatype:(movies)" +
+          "&fl[]=identifier" +
+          "&rows=1" +
+          "&page=" +
+          page +
+          "&output=json";
+
+        const searchRes = await fetch(searchURL);
+        const searchData = await searchRes.json();
+
+        if (!searchData.response.docs.length) throw "sem resultados";
+
+        const id = searchData.response.docs[0].identifier;
+        const metaURL = `https://archive.org/metadata/${id}`;
+
+        const metaRes = await fetch(metaURL);
+        const metaData = await metaRes.json();
+
+        const file = metaData.files.find(
+          (f) => f.format === "MPEG4" && f.name.endsWith(".mp4")
+        );
+
+        if (!file) throw "sem mp4";
+
+        return `https://archive.org/download/${id}/${file.name}`;
+      }
+
+      async function playNext() {
+        try {
+          const url = await getRandomVideoURL();
+          player.src = url;
+          player.load();
+          await player.play();
+        } catch (e) {
+          // falhou → tenta outro silenciosamente
+          setTimeout(playNext, 500);
+        }
+      }
+
+      player.addEventListener("ended", playNext);
+      player.addEventListener("error", playNext);
+
+      // arranque inicial
+      playNext();
+    </script>
+  </body>
+</html>
