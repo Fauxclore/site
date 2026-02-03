@@ -425,3 +425,22 @@ audio {
   --color-secondary: #354f52;
   --color-blue: #0b4ca1;
 }
+
+#começar {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  font-family: "DM Mono", monospace;
+  font-size: 1.75rem;
+  background-color: #ddddbb;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: #111111;
+  border: 2px solid #ddddbb;
+}
+#começar:hover {
+  background-color: #111111;
+  color: #ddddbb;
+  border: 2px solid #ddddbb;
+}
