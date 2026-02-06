@@ -5,15 +5,15 @@
   box-sizing: border-box;
 }
 hr {
-  border: 1px solid white;
+  border: 1px solid var(--color-white);
 }
 /* Corpo da página */
 body {
   margin: 0;
   padding: 0 1rem 150px;
   font-family: "DM Mono", monospace;
-  background-color: #111111;
-  color: #ddddbb;
+  background-color: var(--color-dark);
+  color: var(--color-primary);
   text-align: justify;
 }
 
@@ -60,18 +60,26 @@ iframe {
 /* Title Links */
 a.title-link,
 a.title-link:visited {
-  color: #dda15e;
+  color: var(--color-accent);
   text-decoration: none;
 }
 a.text-link,
 a.text-link:visited {
-  background: linear-gradient(120deg, #f94d50 0%, #f94d50 100%);
+  background: linear-gradient(
+    120deg,
+    var(--color-red) 0%,
+    var(--color-red) 100%
+  );
   background-repeat: no-repeat;
   background-size: 100% 40%;
   background-position: 0 90%;
 }
 a.text-link:hover {
-  background: linear-gradient(120deg, #f94d50 0%, #f94d50 100%);
+  background: linear-gradient(
+    120deg,
+    var(--color-red) 0%,
+    var(--color-red) 100%
+  );
   background-repeat: no-repeat;
   background-size: 100% 100%;
   transition: 0.2s;
@@ -80,7 +88,7 @@ a.text-link:hover {
 a,
 a:visited,
 a:hover {
-  color: #ddddbb;
+  color: var(--color-primary);
   text-decoration: none;
   background-color: transparent;
 }
@@ -102,22 +110,21 @@ figcaption {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  background-color: #111111;
-  color: #ddddbb;
+  background-color: var(--color-dark);
+  color: var(--color-primary);
   z-index: 999;
   flex-wrap: wrap;
 }
 .topbar a {
   margin: 0 15px;
-  padding: 6px 8px;
+  padding: 8px 8px;
   text-decoration: none;
   font-size: 1rem;
-  color: inherit;
+  color: var(--color-primary);
   text-align: center;
 }
 .topbar a:hover {
-  background-color: black;
-  color: white;
+  color: var(--color-red);
 }
 .topbar .icon {
   display: none;
@@ -218,7 +225,7 @@ img {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
-  color: white;
+  color: var(--color-white);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -259,13 +266,13 @@ img {
   padding: 0.5rem 1rem;
   font-family: "DM Mono", monospace;
   font-size: 1.5rem;
-  background-color: #ddddbb;
+  background-color: var(--color-primary);
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 .back-button:hover {
-  background-color: #ddd;
+  background-color: var(--color-primary);
 }
 
 /* Perfil e links */
@@ -293,17 +300,17 @@ img {
   max-width: 600px;
   margin: 0 auto 20px;
   padding: 20px;
-  background: var(--color-disable);
+  background: var(--color-black);
   color: var(--color-primary);
   text-decoration: none;
   font-weight: bold;
-  border: 1px solid white;
+  border: 1px solid var(--color-white);
   border-radius: 10px;
   box-sizing: border-box;
 }
 .profile__links:hover {
-  background: var(--color-secondary);
-  border: 1px dashed white;
+  background: var(--color-dark);
+  border: 1px dashed var(--color-white);
   transition: 0.5s;
 }
 
@@ -417,13 +424,17 @@ audio {
     height: 300px; /* Even smaller on very small screens */
   }
 }
+
+hr {
+  border: 1px solid var(--color-primary);
+}
 /* Cores globais */
 :root {
   --color-dark: #111111;
   --color-primary: #ddddbb;
-  --color-disable: #000;
-  --color-secondary: #354f52;
-  --color-blue: #0b4ca1;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red: #f94d50;
 }
 
 #começar {
@@ -433,14 +444,15 @@ audio {
   padding: 1rem 2rem;
   font-family: "DM Mono", monospace;
   font-size: 1.75rem;
-  background-color: #ddddbb;
+  text-align: center;
+  background-color: var(--color-primary);
   cursor: pointer;
   transition: 0.2s ease;
-  color: #111111;
-  border: 2px solid #ddddbb;
+  color: var(--color-dark);
+  border: 2px solid var(--color-primary);
 }
 #começar:hover {
-  background-color: #111111;
-  color: #ddddbb;
-  border: 2px solid #ddddbb;
+  background-color: var(--color-dark);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
