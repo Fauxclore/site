@@ -157,6 +157,7 @@ body {
   padding: 1rem 2rem;
   font-family: "DM Mono", monospace;
   font-size: 1.75rem;
+  text-align: center;
   background-color: var(--color-primary);
   cursor: pointer;
   transition: 0.2s ease;
