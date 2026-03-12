@@ -141,7 +141,6 @@ figcaption {
   font-size: 1.1rem;
   box-sizing: border-box;
   word-break: normal;
-  hyphens: auto;
 }
 
 /* Imagens fluidas */
@@ -247,7 +246,6 @@ img {
   font-size: 1rem;
   opacity: 0.9;
   text-align: justify;
-  hyphens: auto;
   word-wrap: break-word;
 }
 .blog-slug {
@@ -255,7 +253,6 @@ img {
   font-size: 1rem;
   opacity: 0.9;
   text-align: center;
-  hyphens: auto;
   word-wrap: break-word;
   box-sizing: border-box;
 }
