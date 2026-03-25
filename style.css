@@ -425,14 +425,6 @@ audio {
 hr {
   border: 1px solid var(--color-primary);
 }
-/* Cores globais */
-:root {
-  --color-dark: #111111;
-  --color-primary: #ddddbb;
-  --color-black: #000000;
-  --color-white: #ffffff;
-  --color-red: #f94d50;
-}
 
 #começar {
   display: block;
@@ -452,4 +444,72 @@ hr {
   background-color: var(--color-dark);
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
+}
+
+body {
+  counter-reset: footnotes; /* 1 */
+}
+
+/**
+ * 1. Highlight the targeted footnote
+ *
+ * @note: feel free to come up with a better selector for your case
+ */
+li:has([role="doc-backlink"]):target {
+  background-color: var(--color-black); /* 1 */
+}
+
+/**
+ * 1. Visually make the back links a little smaller
+ */
+[role="doc-backlink"] {
+  font-size: 80%; /* 1 */
+}
+
+/**
+ * Inline footnotes references
+ * 1. Increment the counter at each new reference
+ * 2. Reset link styles to make it appear like regular text
+ */
+[role="doc-noteref"] {
+  counter-increment: footnotes; /* 1 */
+  text-decoration: none; /* 2 */
+  color: inherit; /* 2 */
+  cursor: default; /* 2 */
+  outline: none; /* 2 */
+}
+
+/**
+ * Actual numbered references
+ * 1. Display the current state of the counter (e.g. `[1]`)
+ * 2. Align text as superscript
+ * 3. Make the number smaller (since it’s superscript)
+ * 4. Slightly offset the number from the text
+ * 5. Reset link styles on the number to show it's usable
+ */
+[role="doc-noteref"]::after {
+  content: "[" counter(footnotes) "]"; /* 1 */
+  vertical-align: super; /* 2 */
+  font-size: 50%; /* 3 */
+  margin-left: 2px; /* 4 */
+  color: var(--color-red); /* 5 */
+  text-decoration: underline; /* 5 */
+  cursor: pointer; /* 5 */
+}
+
+/**
+ * 1. Reseting the default focused styles on the number
+ */
+[role="doc-noteref"]:focus::after {
+  outline: thin dotted; /* 1 */
+  outline-offset: 2px; /* 1 */
+}
+
+/* Cores globais */
+:root {
+  --color-dark: #111111;
+  --color-primary: #ddddbb;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red: #f94d50;
 }
