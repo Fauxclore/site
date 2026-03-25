@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
   <head>
     <meta charset="utf-8" />
@@ -40,9 +40,6 @@
   </head>
   <body>
     <iframe id="player" allow="autoplay; fullscreen"></iframe>
-
-    <div id="overlay">clicar para activar som</div>
-
     <script>
       (async function () {
         const player = document.getElementById("player");
@@ -53,7 +50,7 @@
           const page = Math.floor(Math.random() * 100) + 1;
           const rows = 20;
           const q = encodeURIComponent(
-            `collection:${COLLECTION} AND mediatype:movies`
+            `collection:${COLLECTION} AND mediatype:movies`,
           );
 
           const url =
@@ -74,18 +71,6 @@
 
         const id = await randomIdentifier();
         player.src = embedUrl(id, true);
-
-        // activar som após gesto do utilizador
-        overlay.addEventListener(
-          "click",
-          () => {
-            overlay.classList.add("hidden");
-
-            // recarrega o embed sem mute (gesto já ocorreu)
-            player.src = embedUrl(id, false);
-          },
-          { once: true }
-        );
       })();
     </script>
   </body>
