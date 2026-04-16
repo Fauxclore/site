@@ -181,5 +181,5 @@ hr {
 :root {
   --color-dark: #22212a;
   --color-primary: #a0938b;
-  --font-vt323: "DM Mono", monospace;
+  --font-vt323: "JetBrains Mono", monospace;
 }

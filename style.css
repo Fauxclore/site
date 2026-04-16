@@ -493,5 +493,5 @@ li:has([role="doc-backlink"]):target {
   --color-black: #000000;
   --color-white: #ffffff;
   --color-red: #f94d50;
-  --font-VT323: "DM Mono", monospace;
+  --font-VT323: "JetBrains Mono", monospace;
 }
