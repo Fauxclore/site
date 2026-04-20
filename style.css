@@ -10,7 +10,7 @@ hr {
 body {
   margin: 0;
   padding: 0 1rem 150px;
-  font-family: var(--font-VT323);
+  font-family: var(--font-primary);
   background-color: var(--color-dark);
   color: var(--color-primary);
   text-align: justify;
@@ -251,7 +251,7 @@ img {
 .back-button {
   margin: 1rem 0;
   padding: 0.5rem 1rem;
-  font-family: var(--font-VT323);
+  font-family: var(--font-primary);
   font-size: 1.5rem;
   background-color: var(--color-primary);
   border: none;
@@ -413,7 +413,7 @@ hr {
   width: fit-content;
   margin: 2rem auto;
   padding: 1rem 2rem;
-  font-family: var(--font-VT323);
+  font-family: var(--font-primary);
   font-size: 1.75rem;
   text-align: center;
   background-color: var(--color-primary);
@@ -493,5 +493,5 @@ li:has([role="doc-backlink"]):target {
   --color-black: #000000;
   --color-white: #ffffff;
   --color-red: #f94d50;
-  --font-VT323: "JetBrains Mono", monospace;
+  --font-primary: "JetBrains Mono", monospace;
 }

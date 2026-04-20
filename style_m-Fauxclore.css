@@ -11,7 +11,7 @@ hr {
 body {
   margin: 0;
   padding: 0 1rem 150px;
-  font-family: var(--font-VT323);
+  font-family: var(--font-primary);
   background-color: var(--color-dark);
   color: var(--color-primary);
   text-align: justify;
@@ -142,7 +142,7 @@ body {
   width: fit-content;
   margin: 2rem auto;
   padding: 1rem 2rem;
-  font-family: var(--font-VT323);
+  font-family: var(--font-primary);
   text-align: center;
   font-size: 1.75rem;
   background-color: var(--color-primary);
@@ -179,5 +179,5 @@ hr {
 :root {
   --color-dark: #070707;
   --color-primary: #d2d2d2;
-  --font-vt323: "JetBrains Mono", monospace;
+  --font-primary: "JetBrains Mono", monospace;
 }
