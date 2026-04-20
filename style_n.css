@@ -182,5 +182,67 @@ hr {
 :root {
   --color-dark: #39412c;
   --color-primary: #c5ced3;
-  --font-VT323: "DM Mono", monospace;
+  --font-VT323: "JetBrains Mono", monospace;
+}
+
+@media screen and (max-width: 980px) {
+  .topbar a:not(.icon) {
+    display: none;
+  }
+  .topbar .icon {
+    display: block;
+  }
+
+  .topbar.responsive {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+  .topbar.responsive a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
+.topbar img {
+  width: 20px;
+  max-width: 24px;
+  height: auto;
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  background-color: var(--color-dark);
+  color: var(--color-primary);
+  z-index: 999;
+  flex-wrap: wrap;
+}
+.topbar a {
+  margin: 0 15px;
+  padding: 8px 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.topbar a:hover {
+  color: var(--color-red);
+}
+.topbar .icon {
+  display: none;
+  order: -1;
+  margin: 0 auto;
 }
