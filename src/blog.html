@@ -1,0 +1,16 @@
+---
+title: Blog
+layout: "base.njk"
+tags:
+
+image: /img/b_ableton.webp
+slug: Blog Pessoal.
+date: 2025-08-05
+---
+
+{% for blog in collections.blog %}
+<hr />
+<h3><a href="{{blog.url}}">{{ blog.data.title }}</a></h3>
+<h6>{{ blog.data.date | postDate }}</h6>
+<p class="blog-slug">{{ blog.data.slug }}</p>
+{% endfor %}

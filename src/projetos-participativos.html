@@ -1,0 +1,22 @@
+---
+title: Projetos Participativos
+layout: "base.njk"
+---
+
+<div class="post-mosaic">
+  {% for projeto in collections.projeto %}
+  <a href="{{projeto.url}}">
+    <div class="post-container">
+      <div class="post-info">
+        <h3 class="post-title">{{ projeto.data.title }}</h3>
+        <p class="post-slug">{{ projeto.data.slug }}</p>
+      </div>
+      <img
+        src="{{ projeto.data.image }}"
+        alt="{{ projeto.data.title }}"
+        class="post-img"
+      />
+    </div>
+  </a>
+  {% endfor %}
+</div>

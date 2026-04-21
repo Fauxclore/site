@@ -1,0 +1,22 @@
+---
+title: Colaborações
+layout: "base.njk"
+---
+
+<div class="post-mosaic">
+  {% for colaboração in collections.colaboração %}
+  <a href="{{colaboração.url}}">
+    <div class="post-container">
+      <div class="post-info">
+        <h3 class="post-title">{{ colaboração.data.title }}</h3>
+        <p class="post-slug">{{ colaboração.data.slug }}</p>
+      </div>
+      <img
+        src="{{ colaboração.data.image }}"
+        alt="{{ colaboração.data.title }}"
+        class="post-img"
+      />
+    </div>
+  </a>
+  {% endfor %}
+</div>

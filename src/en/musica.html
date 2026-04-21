@@ -1,0 +1,22 @@
+---
+title: Music
+layout: "base_en.njk"
+---
+
+<div class="post-mosaic">
+  {% for musica_en in collections.musica_en %}
+  <a href="{{musica_en.url}}">
+    <div class="post-container">
+      <div class="post-info">
+        <h3 class="post-title">{{ musica_en.data.title }}</h3>
+        <p class="post-slug">{{ musica_en.data.slug }}</p>
+      </div>
+      <img
+        src="{{ musica_en.data.image }}"
+        alt="{{ musica_en.data.title }}"
+        class="post-img"
+      />
+    </div>
+  </a>
+  {% endfor %}
+</div>

@@ -1,0 +1,22 @@
+---
+title: Objetos Sonoros
+layout: "base.njk"
+---
+
+<div class="post-mosaic">
+  {% for objeto in collections.objeto %}
+  <a href="{{objeto.url}}">
+    <div class="post-container">
+      <div class="post-info">
+        <h3 class="post-title">{{ objeto.data.title }}</h3>
+        <p class="post-slug">{{ objeto.data.slug }}</p>
+      </div>
+      <img
+        src="{{ objeto.data.image }}"
+        alt="{{ objeto.data.title }}"
+        class="post-img"
+      />
+    </div>
+  </a>
+  {% endfor %}
+</div>

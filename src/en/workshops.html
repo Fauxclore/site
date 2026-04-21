@@ -1,0 +1,22 @@
+---
+title: Workshops
+layout: "base_en.njk"
+---
+
+<div class="post-mosaic">
+  {% for workshop_en in collections.workshop_en %}
+  <a href="{{workshop_en.url}}">
+    <div class="post-container">
+      <div class="post-info">
+        <h3 class="post-title">{{ workshop_en.data.title }}</h3>
+        <p class="post-slug">{{ workshop_en.data.slug }}</p>
+      </div>
+      <img
+        src="{{ workshop_en.data.image }}"
+        alt="{{ workshop_en.data.title }}"
+        class="post-img"
+      />
+    </div>
+  </a>
+  {% endfor %}
+</div>
