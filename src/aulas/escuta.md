@@ -51,4 +51,4 @@ Leu tudo com atenção e cumpriu cada passo?
 
 Se sim, pressione o botão abaixo.
 
-<a id="começar" href="#" onclick="event.preventDefault();window.location.href=['/aulas/escuta/e_natureza/','/aulas/escuta/e_humano/','/aulas/escuta/e_mecanismo/'][Math.floor(Math.random()*3)]">Li e cumpri tudo o que foi pedido acima.</a>
+<a class="title-link" id="começar" href="#" onclick="event.preventDefault();window.location.href=['/aulas/escuta/e_natureza/','/aulas/escuta/e_humano/','/aulas/escuta/e_mecanismo/'][Math.floor(Math.random()*3)]">Li e cumpri tudo o que foi pedido acima.</a>

@@ -9,7 +9,7 @@ slug: An installation/performance/workshop made with deconstructed pianos.
 date: 2019-09-01
 ---
 
-The **Pianoscópio** is a performance installation by the <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> and marked one of my first encounters with the creative universe of this collective.
+The **Pianoscópio** is a performance installation by the <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> and marked one of my first encounters with the creative universe of this collective.
 
 Like many of CMT's projects, Pianoscópio is difficult to fit into a single definition. It is simultaneously an installation, a performance, a workshop and an instrument. An obvious example of what CMT considers to be "artistic-educational constellations".
 

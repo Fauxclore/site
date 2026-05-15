@@ -23,12 +23,12 @@ layout: "links_en.njk"
 </body>
 <p></p>
 
-I would like to make my position on <a class="text-link" href="https://www.bydamo.la/p/ai-manifesto">"AI"</a> clear on this page. I will obviously not make it accessible via the website’s links, but in a way I am reassured to know that this page (among others that are equally hidden) exists somewhere on my website, and that someone skilled or resourceful will be able to find it.
+I would like to make my position on <a href="https://www.bydamo.la/p/ai-manifesto">"AI"</a> clear on this page. I will obviously not make it accessible via the website’s links, but in a way I am reassured to know that this page (among others that are equally hidden) exists somewhere on my website, and that someone skilled or resourceful will be able to find it.
 
 I, Jorge Miguel Gonçalves Graça, declare that no LLM or {% footnoteref "AI-name", "Or whatever the fashionable name for these technologies is by the time you read this" %}AI{% endfootnoteref %} was used in the construction of this website, or any of its content.
 However, it should be noted that I did not sit down at the computer and create the website _ex nihilo_.
 
-Firstly, I use <a class="text-link" href="https://www.11ty.dev/">Eleventy</a> as an engine to generate .html files from a series of templates and .md files.
+Firstly, I use <a href="https://www.11ty.dev/">Eleventy</a> as an engine to generate .html files from a series of templates and .md files.
 Furthermore, I copied chunks of code almost indiscriminately from:
 
 1. The Eleventy documentation itself

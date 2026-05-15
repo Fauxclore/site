@@ -1,6 +1,6 @@
 ---
 title: Natureza
-layout: "escuta_n.njk"
+layout: "escuta.njk"
 tags: escuta
 image: /img/e_nat.webp
 slug: Sobre todos os sons que da natureza emanam (mesmo sendo o Ser Humano da Natureza, aqui não será considerado)
@@ -27,4 +27,4 @@ Considere que o movimento é uma parte integrante da prática musical. Sinta-se 
 
 Depois de considerar e planear o que foi descrito acima, pressione o botão abaixo.
 
-<a id="começar" href="/aulas/escuta/escuta_2">Li e cumpri tudo o que foi pedido acima.</a>
+<a class="title-link" id="começar" href="/aulas/escuta/escuta_2">Li e cumpri tudo o que foi pedido acima.</a>

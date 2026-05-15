@@ -1,6 +1,6 @@
 ---
 title: Hello World
-layout: "blogs_en.njk"
+layout: "posts_en.njk"
 tags: blog_en
 image: /img/b_hello.webp
 slug: Prolegomena to a blog

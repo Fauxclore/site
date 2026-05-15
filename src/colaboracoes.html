@@ -5,7 +5,7 @@ layout: "base.njk"
 
 <div class="post-mosaic">
   {% for colaboração in collections.colaboração %}
-  <a href="{{colaboração.url}}">
+  <a class="general" href="{{colaboração.url}}">
     <div class="post-container">
       <div class="post-info">
         <h3 class="post-title">{{ colaboração.data.title }}</h3>

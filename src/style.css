@@ -65,12 +65,15 @@ iframe {
 }
 
 a.title-link,
-a.title-link:visited {
-  color: var(--color-accent);
+a.title-link:visited,
+a.title-link:hover {
+  color: var(--color-primary);
   text-decoration: none;
+  background: none;
 }
-a.text-link,
-a.text-link:visited {
+
+a,
+a:visited {
   background: linear-gradient(
     120deg,
     var(--color-red) 0%,
@@ -79,8 +82,11 @@ a.text-link:visited {
   background-repeat: no-repeat;
   background-size: 100% 40%;
   background-position: 0 90%;
+  color: var(--color-primary);
+  text-decoration: none;
 }
-a.text-link:hover {
+
+a:hover {
   background: linear-gradient(
     120deg,
     var(--color-red) 0%,
@@ -91,13 +97,14 @@ a.text-link:hover {
   transition: 0.2s;
 }
 
-a,
-a:visited,
-a:hover {
+a.general,
+a.general:visited,
+a.general:hover {
   color: var(--color-primary);
   text-decoration: none;
-  background-color: transparent;
+  background: none;
 }
+
 figcaption {
   font-size: 1rem;
   font-style: italic;
@@ -127,9 +134,11 @@ figcaption {
   font-size: 1rem;
   color: var(--color-primary);
   text-align: center;
+  background: none;
 }
 .topbar a:hover {
   color: var(--color-red);
+  background: none;
 }
 .topbar .icon {
   display: none;
@@ -186,6 +195,7 @@ img {
   display: block;
   width: 100%;
   text-decoration: none;
+  background: none;
 }
 .card img {
   width: 100%;
@@ -439,61 +449,37 @@ hr {
 }
 
 body {
-  counter-reset: footnotes; /* 1 */
+  counter-reset: footnotes;
 }
 
-/**
- * 1. Highlight the targeted footnote
- *
- * @note: feel free to come up with a better selector for your case
- */
 li:has([role="doc-backlink"]):target {
-  background-color: var(--color-black); /* 1 */
+  background-color: var(--color-black);
 }
 
-/**
- * 1. Visually make the back links a little smaller
- */
 [role="doc-backlink"] {
-  font-size: 80%; /* 1 */
+  font-size: 80%;
 }
 
-/**
- * Inline footnotes references
- * 1. Increment the counter at each new reference
- * 2. Reset link styles to make it appear like regular text
- */
 [role="doc-noteref"] {
-  counter-increment: footnotes; /* 1 */
-  text-decoration: none; /* 2 */
-  color: inherit; /* 2 */
-  cursor: default; /* 2 */
-  outline: none; /* 2 */
+  counter-increment: footnotes;
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+  outline: none;
+  background: none;
 }
 
-/**
- * Actual numbered references
- * 1. Display the current state of the counter (e.g. `[1]`)
- * 2. Align text as superscript
- * 3. Make the number smaller (since it’s superscript)
- * 4. Slightly offset the number from the text
- * 5. Reset link styles on the number to show it's usable
- */
 [role="doc-noteref"]::after {
-  content: "[" counter(footnotes) "]"; /* 1 */
-  vertical-align: super; /* 2 */
-  font-size: 50%; /* 3 */
-  margin-left: 2px; /* 4 */
-  color: var(--color-red); /* 5 */
-  text-decoration: underline; /* 5 */
-  cursor: pointer; /* 5 */
+  content: "[" counter(footnotes) "]";
+  vertical-align: super;
+  font-size: 50%;
+  margin-left: 2px;
+  color: var(--color-red);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-/**
- * 1. Reseting the default focused styles on the number
- */
 [role="doc-noteref"]:focus::after {
-  outline: thin dotted; /* 1 */
-  outline-offset: 2px; /* 1 */
+  outline: thin dotted;
+  outline-offset: 2px;
 }
-

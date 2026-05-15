@@ -13,4 +13,4 @@ Objeto sonoro satírico. Utiliza sensores de proximidade numa tábua de engomar 
 
 Desenvolvido em 2022, este objeto estreou-se durante o XII Encontro Internacional Arte para a Infância e Desenvolvimento Social e Humano, apresentado no momento de Q&A.
 
-Foto cedida pela <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, coorganizadora do evento.
+Foto cedida pela <a href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, coorganizadora do evento.

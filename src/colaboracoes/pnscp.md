@@ -9,7 +9,7 @@ slug: Uma instalação/performance/workshop feita com pianos desconstruídos.
 date: 2019-09-01
 ---
 
-O **Pianoscópio** é uma instalação-performativa da <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> e marcou um dos meus primeiros encontros com o universo criativo deste coletivo.
+O **Pianoscópio** é uma instalação-performativa da <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> e marcou um dos meus primeiros encontros com o universo criativo deste coletivo.
 
 Tal como muitos dos projetos da CMT, o Pianoscópio é difícil de encaixar numa só definição. É simultaneamente instalação, performance, workshop e instrumento. Um exemplo óbvio do que a CMT considera como "constelações artístico-educativas".
 

@@ -1,6 +1,6 @@
 ---
 title: Mecanismos
-layout: "escuta_m.njk"
+layout: "escuta.njk"
 tags: escuta
 image: /img/e_mec.webp
 slug: Tecnologias e construções humanas, e os sons que delas emanam.
@@ -34,4 +34,4 @@ Tome o tempo necessário para o desenho ser o mais completo e expressivo que con
 
 Depois de cumprir os passos acima, pressione o botão abaixo
 
-<a id="começar" href="/aulas/escuta/e_mecanismo_2">Li e cumpri tudo o que foi pedido acima.</a>
+<a class="title-link" id="começar" href="/aulas/escuta/e_mecanismo_2">Li e cumpri tudo o que foi pedido acima.</a>

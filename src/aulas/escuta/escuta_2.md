@@ -22,8 +22,8 @@ Irão fazer uma performance de, no máximo, **3 minutos** para os restantes cole
 
 No final das apresentações, fotografem todas as partituras e partilhem-nas mutuamente.
 
-Aproveitem para viajar no website do <a class="text-link" href="https://wfae.net/" data-type="link" data-id="https://wfae.net/">World Forum for Acoustic Ecology</a>
-e do <a class="text-link" href="https://www.sfu.ca/~truax/wsp.html" data-type="link" data-id="https://www.sfu.ca/~truax/wsp.html">World Soundscape Project</a>
+Aproveitem para viajar no website do <a  href="https://wfae.net/" data-type="link" data-id="https://wfae.net/">World Forum for Acoustic Ecology</a>
+e do <a  href="https://www.sfu.ca/~truax/wsp.html" data-type="link" data-id="https://www.sfu.ca/~truax/wsp.html">World Soundscape Project</a>
 
 <br/>
 

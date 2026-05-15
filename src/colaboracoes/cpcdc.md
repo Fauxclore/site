@@ -10,7 +10,7 @@ date: 2020-09-19
 ---
 
 Não tenho as palavras certas para descrever o que **O Céu Por Cima de Cá** representa para mim. Por um lado, é um dos primeiros espetáculos
-em que tive o prazer de pisar o palco com mais 5 artistas incríveis da <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> que desde então, e muito devido ao tempo que passámos juntos a construir esta peça, se tornaram os meus melhores amigos. Família, mesmo.
+em que tive o prazer de pisar o palco com mais 5 artistas incríveis da <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> que desde então, e muito devido ao tempo que passámos juntos a construir esta peça, se tornaram os meus melhores amigos. Família, mesmo.
 
 Também foi um grandecíssimo grito do Ipiranga contra as limitações impostas pela Pandemia. Uma prova de que era simultaneamente possível manter e criar ligações entre pessoas, pessoais ou artísticas, mantendo a segurança de todos os envolvidos. Que a pandemia nos podia levar muito (e se levou, eu ainda não acabei o meu luto e não creio que a maioria das pessoas sequer o tenham começado), mas não nos pode levar aquilo que nos torna inerentemente humanos, que é a sociedade e as relações que construímos com os outros.
 

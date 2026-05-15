@@ -10,10 +10,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/img");
   eleventyConfig.addPassthroughCopy("src/music");
   eleventyConfig.addPassthroughCopy("src/papers");
-  eleventyConfig.addPassthroughCopy("src/style.css");
-  eleventyConfig.addPassthroughCopy("src/style_n.css");
-  eleventyConfig.addPassthroughCopy("src/style_h.css");
-  eleventyConfig.addPassthroughCopy("src/style_m.css");
+  eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
+  eleventyConfig.addPassthroughCopy({ "src/style_n.css": "style_n.css" });
+  eleventyConfig.addPassthroughCopy({ "src/style_h.css": "style_h.css" });
+  eleventyConfig.addPassthroughCopy({ "src/style_m.css": "style_m.css" });
   eleventyConfig.addPlugin(footnotes, {
     title: "Notas",
     titleId: "footnotes-label",

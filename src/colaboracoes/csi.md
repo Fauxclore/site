@@ -11,7 +11,7 @@ date: 2025-09-27
 
 A **Cartografia Sonora Imaginária** é, por natureza, um projeto difícil de definir. À primeira vista, apresentou‑se como um espetáculo estreado em setembro de 2025 na Casa das Artes de Vila Nova de Famalicão: uma fusão de vídeo e música ao vivo que não era exatamente a “sonorização” de um filme, nem um exercício de imagens reativas, mas algo que habitava o espaço intermédio.
 
-O espetáculo propunha uma viagem pelas memórias dos dois artistas em palco, atravessando a essência da <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> e ecos de encontros breves, mas marcantes, com Alberto Manguel.
+O espetáculo propunha uma viagem pelas memórias dos dois artistas em palco, atravessando a essência da <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> e ecos de encontros breves, mas marcantes, com Alberto Manguel.
 
 Mas esta Cartografia não nasceu ali, nem se esgota no palco. O seu percurso começou anos antes, em pequenas performances improvisadas: a partir de um armário de arrumação num museu, num café onde se sonorizou um vídeo filmado por uma amiga a bordo de um navio quebra‑gelo, numa viagem ao Japão, numa semana de experiências num planetário e até num sonho falhado com um planetário insuflável.
 

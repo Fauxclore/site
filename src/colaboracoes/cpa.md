@@ -9,7 +9,7 @@ slug: É Urgente o Amor.
 date: 2023-06-03
 ---
 
-**Com Palavras Amo** foi uma das muitas instalações em que tive o privilégio de colaborar com a <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>. Mas este projeto é muito mais do que a sua forma final.
+**Com Palavras Amo** foi uma das muitas instalações em que tive o privilégio de colaborar com a <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>. Mas este projeto é muito mais do que a sua forma final.
 
 É uma celebração de Eugénio de Andrade; poeta multifacetado, personalidade complexa, artesão das palavras.
 É um projeto comunitário onde testemunhei alguns dos momentos mais poéticos e inesquecíveis da minha vida, protagonizados por pessoas de uma beleza humana difícil de descrever.

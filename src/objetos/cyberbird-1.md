@@ -16,4 +16,4 @@ O CyberBird 1.0 é consiste num software desenvolvido em PureData, que recebe o 
 
 Para além deste contexto performativo e satírico, tem também aplicação em workshops com pessoas sem literacia musical, permitindo-lhes criar um diálogo criativo e musical com um objeto interativo.
 
-Desenvolvido em 2019, numa parceria com a <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, que detém os direitos de imagem das fotos aqui incluídas.
+Desenvolvido em 2019, numa parceria com a <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, que detém os direitos de imagem das fotos aqui incluídas.

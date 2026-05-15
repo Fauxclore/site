@@ -9,7 +9,7 @@ slug: An abstract and poetic story that spans from the Big Bang to the Anthropoc
 date: 2022-09-24
 ---
 
-The **Canção da Terra** is perhaps the show by the <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> that I most enjoy performing on stage. Artistically, I feel it is like a well-oiled clock: every gesture has weight, nothing is superfluous, everything happens in a succession of complex, entertaining and, more than once, deeply emotional moments.
+The **Canção da Terra** is perhaps the show by the <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> that I most enjoy performing on stage. Artistically, I feel it is like a well-oiled clock: every gesture has weight, nothing is superfluous, everything happens in a succession of complex, entertaining and, more than once, deeply emotional moments.
 
 In this show, I have the privilege of appearing semi-naked as a DJ, playing flutes and recorders, dog toys, an enlarged and amplified saxophone, organ pipes, wooden boxes and... and...
 It is also, perhaps, the show where I most felt my body find its natural place on stage, in harmony with that of my colleagues, whose artistic presence inspires me whenever we share the same space.

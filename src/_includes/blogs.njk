@@ -17,7 +17,9 @@
 
       <h1>{{ title }}</h1>
       <h6>{{ page.date | postDate }}</h6>
-      {% if image %} {% endif %}
+      {% if image %}
+      <img src="{{ image }}" alt="{{ title }}" /> 
+      {% endif %}
       <main>{{ content | safe }}</main>
     </div>
     <script>

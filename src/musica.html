@@ -5,7 +5,7 @@ layout: "base.njk"
 
 <div class="post-mosaic">
   {% for musica in collections.musica %}
-  <a href="{{musica.url}}">
+  <a class="general" href="{{musica.url}}">
     <div class="post-container">
       <div class="post-info">
         <h3 class="post-title">{{ musica.data.title }}</h3>

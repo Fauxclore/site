@@ -10,7 +10,10 @@ date: 2025-08-05
 
 {% for blog in collections.blog %}
 <hr />
-<h3><a href="{{blog.url}}">{{ blog.data.title }}</a></h3>
+<h3><a class="general" href="{{blog.url}}">{{ blog.data.title }}</a></h3>
 <h6>{{ blog.data.date | postDate }}</h6>
 <p class="blog-slug">{{ blog.data.slug }}</p>
+<div>
+    <a href="{{blog.url}}"> <img src="{{ blog.data.image }}" alt="{{ blog.data.title }}" class="post-img" /></a> 
+</div>
 {% endfor %}

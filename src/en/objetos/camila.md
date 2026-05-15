@@ -17,4 +17,4 @@ Although in its final version the interaction has been simplified - it touches i
 
 This project reflects the importance of respecting the limits of those who are vulnerable, but also of encouraging a gradual vulnerabilisation that allows deeper bonds to be created.
 
-Camila made her debut in 2022 in an immersive training course for the <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, in Loulé, and was later incorporated into the show Canção da Terra, from which the photo above was taken, with permission from the Companhia de Música Teatral.
+Camila made her debut in 2022 in an immersive training course for the <a href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, in Loulé, and was later incorporated into the show Canção da Terra, from which the photo above was taken, with permission from the Companhia de Música Teatral.

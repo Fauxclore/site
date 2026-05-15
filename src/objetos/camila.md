@@ -17,4 +17,4 @@ Embora na sua versão final a interação tenha sido simplificada — toca na pr
 
 Este projeto reflete a importância de respeitar os limites de quem é vulnerável, mas também de encorajar uma vulnerabilização gradual que permita criar laços mais profundos.
 
-A Camila estreou-se em 2022 numa formação imersiva da <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, em Loulé, sendo mais tarde incorporada no espetáculo Canção da Terra, de onde foi retirada a foto acima, com permissão da Companhia de Música Teatral.
+A Camila estreou-se em 2022 numa formação imersiva da <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, em Loulé, sendo mais tarde incorporada no espetáculo Canção da Terra, de onde foi retirada a foto acima, com permissão da Companhia de Música Teatral.

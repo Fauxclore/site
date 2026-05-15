@@ -9,7 +9,7 @@ slug: Love is Urgent.
 date: 2023-06-03
 ---
 
-**Com Palavras Amo** was one of many installations in which I had the privilege of collaborating with the <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>. But this project is much more than its final form.
+**Com Palavras Amo** was one of many installations in which I had the privilege of collaborating with the <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>. But this project is much more than its final form.
 
 It is a celebration of Eugénio de Andrade; a multifaceted poet, complex personality, and wordsmith.
 It is a community project where I witnessed some of the most poetic and unforgettable moments of my life, starring people of a human beauty that is difficult to describe.

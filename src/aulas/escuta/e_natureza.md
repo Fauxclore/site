@@ -1,6 +1,6 @@
 ---
 title: Natureza
-layout: "escuta_n.njk"
+layout: "escuta.njk"
 tags: escuta
 image: /img/e_nat.webp
 slug: Sobre todos os sons que da natureza emanam (mesmo sendo o Ser Humano da Natureza, aqui não será considerado)
@@ -36,4 +36,4 @@ Tome o tempo necessário para o desenho ser o mais completo e expressivo que con
 
 Depois de cumprir os passos acima, pressione o botão abaixo
 
-<a id="começar" href="/aulas/escuta/e_natureza_2">Li e cumpri tudo o que foi pedido acima.</a>
+<a class="title-link" id="começar" href="/aulas/escuta/e_natureza_2">Li e cumpri tudo o que foi pedido acima.</a>

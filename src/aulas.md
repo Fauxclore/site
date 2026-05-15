@@ -7,7 +7,7 @@ Nesta página estão reunidos materiais que vou criando para usar em aulas, em p
 
 <div class="post-mosaic">
   {% for aula in collections.aula %}
-  <a href="{{aula.url}}">
+  <a class="general" href="{{aula.url}}">
     <div class="post-container">
       <div class="post-info">
         <h3 class="post-title">{{ aula.data.title }}</h3>

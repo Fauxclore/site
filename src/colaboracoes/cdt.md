@@ -9,7 +9,7 @@ slug: Uma história abstrata e poética que vai desde o Big Bang, ao Antropoceno
 date: 2022-09-24
 ---
 
-A **Canção da Terra** é, talvez, o espetáculo da <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> que mais prazer me dá fazer em palco. Artisticamente, sinto-o como umrelógio bem oleado: cada gesto tem peso, nada sobra, tudo acontece numa sucessão de momentos complexos, divertidos e, mais do que uma vez, profundamente emotivos.
+A **Canção da Terra** é, talvez, o espetáculo da <a  href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a> que mais prazer me dá fazer em palco. Artisticamente, sinto-o como umrelógio bem oleado: cada gesto tem peso, nada sobra, tudo acontece numa sucessão de momentos complexos, divertidos e, mais do que uma vez, profundamente emotivos.
 
 Neste espetáculo tenho o privilégio de aparecer semi‑nu enquanto DJ, toco flautas e flautinhas, bonecos chiadores para cães, um saxofone aumentado e amplificado, tubos de órgão, caixinhas de madeira e… e…
 É também, talvez, o espetáculo onde mais senti o meu corpo encontrar o seu lugar natural em palco, em harmonia com o dos meus colegas, cuja presença artística me inspira sempre que partilhamos o mesmo espaço.

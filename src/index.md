@@ -12,7 +12,7 @@ nome masculino
 
 <div class="post-mosaic">
   {% for post in collections.post %}
-  <a  href="{{post.url}}">
+  <a class="general" href="{{post.url}}">
     <div class="post-container">
       <div class="post-info">
         <h3 class="post-title">{{ post.data.title }}</h3>

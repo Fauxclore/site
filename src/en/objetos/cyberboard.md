@@ -13,4 +13,4 @@ Satirical sound object. It uses proximity sensors on an ironing board which, con
 
 Developed in 2022, this object made its debut during the XII International Colloquium Arts for Childhood and Social and Human Development, presented during the Q&A.
 
-Photo courtesy of <a class="text-link" href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, co-organiser of the event.
+Photo courtesy of <a c href="https://musicateatral.com/" data-type="link" data-id="https://musicateatral.com/">Companhia de Música Teatral</a>, co-organiser of the event.
