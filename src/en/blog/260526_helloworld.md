@@ -1,9 +1,9 @@
 ---
 title: Hello World
-layout: "blogs.njk"
+layout: "blogs_en.njk"
 tags: blog_en
 image: /img/b_hello.webp
-slug: Prolegómenos para um blog
+slug: Prolegomena to a blog
 date: 2026-05-15
 ---
 
