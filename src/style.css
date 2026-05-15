@@ -1,3 +1,13 @@
+:root {
+  --color-dark: #111111;
+  --color-primary: #ddddbb;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red: #f94d50;
+  --font-primary: "JetBrains Mono", monospace;
+}
+
+
 *,
 *::before,
 *::after {
@@ -487,11 +497,3 @@ li:has([role="doc-backlink"]):target {
   outline-offset: 2px; /* 1 */
 }
 
-:root {
-  --color-dark: #111111;
-  --color-primary: #ddddbb;
-  --color-black: #000000;
-  --color-white: #ffffff;
-  --color-red: #f94d50;
-  --font-primary: "JetBrains Mono", monospace;
-}
