@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberBird 4.0</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        transition: background-color 0.5s ease;
+      }
+      .bird {
+        position: absolute;
+        width: clamp(50px, 10vw, 100px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        cursor: pointer;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        will-change: opacity, transform;
+      }
+      .bird:hover {
+        transform: scale(1.05);
+      }
+      #ws-status {
+        position: fixed;
+        bottom: 12px;
+        right: 16px;
+        font-family: monospace;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+      }
+      #ws-status.connected {
+        opacity: 0.6;
+      }
+      #ws-status.error {
+        opacity: 1;
+      }
+      #ws-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #888;
+      }
+      #ws-status.connected #ws-dot {
+        background: #47ff9b;
+      }
+      #ws-status.error #ws-dot {
+        background: #ff4747;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ws-status">
+      <span id="ws-dot"></span>
+      <span id="ws-label">connecting…</span>
+    </div>
+
+    <script>
+      // ── WebSocket setup ───────────────────────────────────────────────
+      const WS_URL = "wss://ws.fauxclore.com";
+      const RECONNECT_DELAY = 3000;
+
+      let ws, reconnectTimer;
+
+      const statusEl = document.getElementById("ws-status");
+      const dotEl = document.getElementById("ws-dot");
+      const labelEl = document.getElementById("ws-label");
+
+      function setStatus(state) {
+        statusEl.className = state;
+        labelEl.textContent =
+          { connected: "connected", error: "disconnected" }[state] ??
+          "connecting…";
+      }
+
+      function sendToTD(payload) {
+        if (!ws || ws.readyState !== WebSocket.OPEN) return;
+        ws.send(JSON.stringify(payload));
+      }
+
+      function connect() {
+        clearTimeout(reconnectTimer);
+        ws = new WebSocket(WS_URL);
+        ws.onopen = () => setStatus("connected");
+        ws.onerror = () => setStatus("error");
+        ws.onclose = () => {
+          setStatus("error");
+          reconnectTimer = setTimeout(connect, RECONNECT_DELAY);
+        };
+      }
+
+      connect();
+
+      // ── CyberBird app ─────────────────────────────────────────────────
+      class CyberBirdApp {
+        constructor() {
+          this.backgroundColors = [
+            "#5aa9c2",
+            "#b6d3ef",
+            "#0099bd",
+            "#0098db",
+            "#50afe4",
+            "#d7eaf9",
+            "#88c4ec",
+            "#91afd9",
+            "#88cad2",
+          ];
+
+          this.birds = [
+            { src: "/img/bird1.png", name: "bird1" },
+            { src: "/img/bird2.png", name: "bird2" },
+            { src: "/img/bird3.png", name: "bird3" },
+            { src: "/img/bird4.png", name: "bird4" },
+            { src: "/img/bird5.png", name: "bird5" },
+          ];
+
+          this.margin = 30;
+          this.birdSize = 100;
+          this.positions = [];
+
+          this.init();
+        }
+
+        init() {
+          this.setRandomBackground();
+          this.createBirds();
+          this.addResizeListener();
+        }
+
+        setRandomBackground() {
+          const randomColor =
+            this.backgroundColors[
+              Math.floor(Math.random() * this.backgroundColors.length)
+            ];
+          document.body.style.backgroundColor = randomColor;
+        }
+
+        getRandomPosition() {
+          const screenWidth = window.innerWidth;
+          const screenHeight = window.innerHeight;
+          const effectiveBirdSize = Math.min(
+            this.birdSize,
+            Math.min(screenWidth, screenHeight) * 0.2,
+          );
+
+          let attempts = 0;
+          while (attempts < 100) {
+            const x =
+              Math.random() *
+                (screenWidth - 2 * this.margin - effectiveBirdSize) +
+              this.margin;
+            const y =
+              Math.random() *
+                (screenHeight - 2 * this.margin - effectiveBirdSize) +
+              this.margin;
+
+            if (
+              this.positions.every(
+                (pos) => Math.hypot(pos.x - x, pos.y - y) > effectiveBirdSize,
+              )
+            ) {
+              this.positions.push({ x, y });
+              return { x: `${x}px`, y: `${y}px` };
+            }
+            attempts++;
+          }
+          return { x: `${this.margin}px`, y: `${this.margin}px` };
+        }
+
+        createBirds() {
+          this.positions = [];
+          document.querySelectorAll(".bird").forEach((b) => b.remove());
+
+          this.birds.forEach((birdData) => {
+            const img = document.createElement("img");
+            img.src = birdData.src;
+            img.alt = birdData.name;
+            img.className = "bird";
+
+            const pos = this.getRandomPosition();
+            img.style.left = pos.x;
+            img.style.top = pos.y;
+
+            img.addEventListener("click", () =>
+              this.blinkBird(img, birdData.name),
+            );
+            img.addEventListener("error", () => {
+              img.style.display = "none";
+            });
+
+            document.body.appendChild(img);
+          });
+        }
+
+        blinkBird(img, birdName) {
+          img.style.opacity = 0.5;
+          setTimeout(() => {
+            img.style.opacity = 1;
+          }, 200);
+
+          // Send to TouchDesigner over WebSocket
+          sendToTD({ type: "bird", bird: birdName });
+        }
+
+        addResizeListener() {
+          let resizeTimer;
+          window.addEventListener("resize", () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => this.createBirds(), 250);
+          });
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        new CyberBirdApp();
+      });
+    </script>
+  </body>
+</html>
