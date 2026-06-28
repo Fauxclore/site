@@ -9,9 +9,9 @@ slug: Caixa de música que responde à presença de pessoas.
 date: 2022-06-27
 ---
 
-A Camila é mais do que um objeto; é uma presença quase humana, fruto de uma criação profundamente pessoal, inspirada pela necessidade de comunicar a dificuldade de estabelecer e manter contacto para quem vive com timidez ou ansiedade social.
+A Camila é um objeto muito pessoal, uma presença quase humana, inspirada pela necessidade de comunicar a dificuldade de estabelecer e manter contacto para quem vive com timidez ou ansiedade social.
 
-Embora na sua versão final a interação tenha sido simplificada — toca na presença de pessoas e para na sua ausência — o conceito inicial era mais complexo:
+Embora na sua versão final a interação tenha sido simplificada (toca na presença de pessoas e para na sua ausência) o conceito inicial era mais complexo:
 
 > Após ser ligada, Camila iniciava a sua melodia de forma extremamente lenta. Quando alguém se aproximava a uma certa distância, parava de imediato. Porém, se voltasse a “sentir-se à vontade,” retomava a melodia a um ritmo mais acelerado e ganhava “resistência,” permitindo uma aproximação maior. Após alguns ciclos de aproximação, recuo, habituação e recomeço, era possível pegar na caixa de música e caminhar livremente pela sala, enquanto esta tocaria a sua melodia na velocidade máxima, em plena confiança.
 
