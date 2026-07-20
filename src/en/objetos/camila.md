@@ -9,7 +9,7 @@ slug: Music box that responds to the presence of people.
 date: 2022-06-27
 ---
 
-Camila is more than an object; it's an almost human presence, the fruit of a deeply personal creation, inspired by the need to communicate the difficulty of establishing and maintaining contact for those living with shyness or social anxiety.
+Camila is a very personal object, an almost human presence, inspired by the need to convey the difficulty of making and maintaining contact for those who live with shyness or social anxiety.
 
 Although in its final version the interaction has been simplified - it touches in the presence of people and stops in their absence - the initial concept was more complex:
 
