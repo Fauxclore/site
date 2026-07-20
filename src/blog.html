@@ -2,8 +2,8 @@
 title: Blog
 layout: "base.njk"
 tags:
-    - post
-image: /img/b_ableton.webp
+  - post
+image: /img/b_slowtech.webp
 slug: Blog Pessoal.
 date: 2025-08-05
 ---
@@ -14,6 +14,11 @@ date: 2025-08-05
 <h6>{{ blog.data.date | postDate }}</h6>
 <p class="blog-slug">{{ blog.data.slug }}</p>
 <div>
-    <a href="{{blog.url}}"> <img src="{{ blog.data.image }}" alt="{{ blog.data.title }}" class="post-img" /></a> 
+  <a href="{{blog.url}}">
+    <img
+      src="{{ blog.data.image }}"
+      alt="{{ blog.data.title }}"
+      class="post-img"
+  /></a>
 </div>
 {% endfor %}
