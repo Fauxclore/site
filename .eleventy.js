@@ -1,5 +1,6 @@
 const { DateTime } = require("luxon");
 const footnotes = require("eleventy-plugin-footnotes");
+const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("postDate", (dateObj) => {
@@ -27,4 +28,22 @@ module.exports = function (eleventyConfig) {
       output: "site",
     },
   };
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: "RSS", // or "rss", "json"
+    outputPath: "/feed.xml",
+    collection: {
+      name: "blog", // iterate over `collections.posts`
+      limit: 10, // 0 means no limit
+    },
+    metadata: {
+      language: "pt",
+      title: "Fauxclore",
+      subtitle: "Feed de artigos publicados no website.",
+      base: "https://fauxclore.com/",
+      author: {
+        name: "Jorge Graça",
+        email: "thefauxclore@gmail.com", // Optional
+      },
+    },
+  });
 };
