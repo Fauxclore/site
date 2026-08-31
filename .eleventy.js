@@ -1,7 +1,3 @@
-const { DateTime } = require("luxon");
-const footnotes = require("eleventy-plugin-footnotes");
-const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
-
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(new Date(dateObj), { zone: "utc" }).toFormat(
@@ -22,12 +18,7 @@ module.exports = function (eleventyConfig) {
     baseClass: "Footnotes",
     classes: {},
   });
-  return {
-    dir: {
-      input: "src",
-      output: "site",
-    },
-  };
+
   eleventyConfig.addPlugin(feedPlugin, {
     type: "RSS", // or "rss", "json"
     outputPath: "/feed.xml",
@@ -42,8 +33,15 @@ module.exports = function (eleventyConfig) {
       base: "https://fauxclore.com/",
       author: {
         name: "Jorge Graça",
-        email: "thefauxclore@gmail.com", // Optional
+        email: "thefauxclore@gmail.com",
       },
     },
   });
+
+  return {
+    dir: {
+      input: "src",
+      output: "site",
+    },
+  };
 };
