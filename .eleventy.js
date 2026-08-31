@@ -24,7 +24,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(feedPlugin, {
-    type: "RSS", // or "rss", "json"
+    type: "rss", // or "rss", "json"
     outputPath: "/feed.xml",
     collection: {
       name: "blog", // iterate over `collections.posts`
