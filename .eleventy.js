@@ -1,3 +1,7 @@
+const { DateTime } = require("luxon");
+const footnotes = require("eleventy-plugin-footnotes");
+const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(new Date(dateObj), { zone: "utc" }).toFormat(
