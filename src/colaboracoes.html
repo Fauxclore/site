@@ -3,17 +3,37 @@ title: Colaborações
 layout: "base.njk"
 ---
 
+<h2>Companhia de Música Teatral</h2>
 <div class="post-mosaic">
-  {% for colaboração in collections.colaboração %}
-  <a class="general" href="{{colaboração.url}}">
+  {% for colaboração_cmt in collections.colaboração_cmt %}
+  <a class="general" href="{{colaboração_cmt.url}}">
     <div class="post-container">
       <div class="post-info">
-        <h3 class="post-title">{{ colaboração.data.title }}</h3>
-        <p class="post-slug">{{ colaboração.data.slug }}</p>
+        <h3 class="post-title">{{ colaboração_cmt.data.title }}</h3>
+        <p class="post-slug">{{ colaboração_cmt.data.slug }}</p>
       </div>
       <img
-        src="{{ colaboração.data.image }}"
-        alt="{{ colaboração.data.title }}"
+        src="{{ colaboração_cmt.data.image }}"
+        alt="{{ colaboração_cmt.data.title }}"
+        class="post-img"
+      />
+    </div>
+  </a>
+  {% endfor %}
+</div>
+<hr />
+<h2>Ordem do Ó</h2>
+<div class="post-mosaic">
+  {% for colaboração_ordem in collections.colaboração_ordem %}
+  <a class="general" href="{{colaboração_ordem.url}}">
+    <div class="post-container">
+      <div class="post-info">
+        <h3 class="post-title">{{ colaboração_ordem.data.title }}</h3>
+        <p class="post-slug">{{ colaboração_ordem.data.slug }}</p>
+      </div>
+      <img
+        src="{{ colaboração_ordem.data.image }}"
+        alt="{{ colaboração_ordem.data.title }}"
         class="post-img"
       />
     </div>

@@ -7,7 +7,6 @@
   --font-primary: "JetBrains Mono", monospace;
 }
 
-
 *,
 *::before,
 *::after {
@@ -46,9 +45,12 @@ h4 {
   font-size: clamp(2rem, 6vw, 3rem);
 }
 h5 {
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: lighter;
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0rem;
+  font-style: italic;
+  color: var(--color-red);
 }
 h6 {
   margin: 1.5rem;
@@ -56,6 +58,14 @@ h6 {
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
+}
+
+h7 {
+  text-align: left;
+  font-size: 2rem;
+  padding: 0;
+  margin: 1.5rem;
+  font-style: italic;
 }
 
 iframe {
