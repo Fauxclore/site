@@ -11,7 +11,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/img");
   eleventyConfig.addPassthroughCopy("src/music");
   eleventyConfig.addPassthroughCopy("src/papers");
-  eleventyConfig.addPassthroughCopy("src/improvisa");
+  eleventyConfig.addPassthroughCopy("src/improvisa/sounds");
+  eleventyConfig.addPassthroughCopy("src/improvisa/symbols");
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
   eleventyConfig.addPassthroughCopy({
     "src/style_webjam.css": "style_webjam.css",
