@@ -1,6 +1,6 @@
 name = "fauxclore"
 compatibility_date = "2024-09-23"
-pages_build_output_dir = "_site"
+pages_build_output_dir = "site"
 
 [[d1_databases]]
 binding = "DB"
