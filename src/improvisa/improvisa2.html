@@ -1,0 +1,91 @@
+---
+layout: base.njk
+title: Improvisa #2
+permalink: /improvisa/improvisa2/
+---
+
+<div id="stage"></div>
+
+<style>
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  #stage {
+    position: fixed;
+    inset: 0; /* covers the whole screen */
+    z-index: 1; /* below your .topbar (999) */
+    overflow: hidden;
+    pointer-events: none; /* never blocks clicks on the menu */
+  }
+
+  #stage img {
+    position: absolute;
+    margin: 0; /* cancels your global "margin: 0 auto" */
+    max-width: none;
+    height: auto;
+    transition: opacity 2s;
+    user-select: none;
+  }
+</style>
+
+<script>
+  const SYMBOLS = [
+    "back",
+    "forward",
+    "metronomo",
+    "pausa",
+    "play",
+    "sax",
+    "tambor",
+    "teclado",
+  ];
+  const EXT = "svg"; // change to svg or webp if you switch
+  const BASE = "/improvisa/symbols/";
+  const INTERVAL_MS = 30000; // 30 seconds
+
+  const stage = document.getElementById("stage");
+  let cursor = 0; // our bookmark in the database
+
+  // Download every image once, so they appear instantly later
+  SYMBOLS.forEach((s) => {
+    new Image().src = `${BASE}${s}.${EXT}`;
+  });
+
+  const rand = (min, max) => Math.random() * (max - min) + min;
+
+  async function showNextBatch() {
+    try {
+      const res = await fetch(`/api/next?after=${cursor}`);
+      const data = await res.json();
+      cursor = data.cursor;
+
+      // fade out the previous batch, then remove it from the page
+      const old = Array.from(stage.children);
+      old.forEach((el) => (el.style.opacity = 0));
+      setTimeout(() => old.forEach((el) => el.remove()), 2000);
+
+      // add the new batch at random size, position and rotation
+      data.items.forEach((item) => {
+        const img = document.createElement("img");
+        img.src = `${BASE}${item.symbol}.${EXT}`;
+        img.alt = "";
+        img.style.width = rand(8, 40) + "vw";
+        img.style.left = rand(-5, 90) + "vw";
+        img.style.top = rand(-5, 80) + "vh";
+        img.style.transform = `rotate(${rand(0, 360)}deg)`;
+        img.style.opacity = 0;
+        stage.appendChild(img);
+        img.onload = () => requestAnimationFrame(() => (img.style.opacity = 1));
+      });
+    } catch (err) {
+      // if something fails (network blip), try again at the next tick
+    }
+  }
+
+  showNextBatch(); // show one batch immediately
+  setInterval(showNextBatch, INTERVAL_MS); // then every 30 seconds, forever
+</script>

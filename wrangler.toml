@@ -1,0 +1,8 @@
+name = "fauxclore"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "_site"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "improvisa"
+database_id = "5f2f601b-a131-4208-b3d4-98dcad5c35ea"

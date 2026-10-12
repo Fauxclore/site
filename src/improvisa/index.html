@@ -1,0 +1,137 @@
+---
+layout: base.njk
+title: Improvisa
+permalink: /improvisa/
+---
+
+<div class="main">
+  <h1>Improvisa</h1>
+
+  <div class="sym-field">
+    <button
+      class="sym"
+      data-symbol="back"
+      data-sound="/improvisa/sounds/back.mp3"
+      aria-label="back"
+    >
+      <img src="/improvisa/symbols/back.png" alt="" draggable="false" />
+    </button>
+    <button
+      class="sym"
+      data-symbol="forward"
+      data-sound="/improvisa/sounds/forward.mp3"
+      aria-label="forward"
+    >
+      <img src="/improvisa/symbols/forward.png" alt="" draggable="false" />
+    </button>
+    <button
+      class="sym"
+      data-symbol="metronomo"
+      data-sound="/improvisa/sounds/metronomo.mp3"
+      aria-label="metrónomo"
+    >
+      <img src="/improvisa/symbols/metronomo.png" alt="" draggable="false" />
+    </button>
+    <button
+      class="sym"
+      data-symbol="pausa"
+      data-sound="/improvisa/sounds/pausa.mp3"
+      aria-label="pausa"
+    >
+      <img src="/improvisa/symbols/pausa.png" alt="" draggable="false" />
+    </button>
+    <button
+      class="sym"
+      data-symbol="play"
+      data-sound="/improvisa/sounds/play.mp3"
+      aria-label="play"
+    >
+      <img src="/improvisa/symbols/play.png" alt="" draggable="false" />
+    </button>
+    <button
+      class="sym"
+      data-symbol="sax"
+      data-sound="/improvisa/sounds/sax.mp3"
+      aria-label="sax"
+    >
+      <img src="/improvisa/symbols/sax.png" alt="" draggable="false" />
+    </button>
+    <button
+      class="sym"
+      data-symbol="tambor"
+      data-sound="/improvisa/sounds/tambor.mp3"
+      aria-label="tambor"
+    >
+      <img src="/improvisa/symbols/tambor.png" alt="" draggable="false" />
+    </button>
+    <button
+      class="sym"
+      data-symbol="teclado"
+      data-sound="/improvisa/sounds/teclado.mp3"
+      aria-label="teclado"
+    >
+      <img src="/improvisa/symbols/teclado.png" alt="" draggable="false" />
+    </button>
+  </div>
+</div>
+
+<style>
+  .sym-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem auto;
+  }
+  .sym {
+    width: clamp(80px, 18vw, 140px);
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sym img {
+    pointer-events: none;
+  }
+  .sym:focus-visible {
+    outline: 2px dashed var(--color-red);
+    outline-offset: 6px;
+  }
+</style>
+
+<script>
+  const sounds = {};
+  let currentId = null;
+
+  function stopSound(id) {
+    sounds[id].pause();
+    sounds[id].currentTime = 0;
+  }
+
+  document.querySelectorAll(".sym").forEach((btn) => {
+    const id = btn.dataset.symbol;
+
+    const audio = new Audio(btn.dataset.sound);
+    audio.loop = true;
+    audio.preload = "auto";
+    sounds[id] = audio;
+
+    btn.addEventListener("click", () => {
+      if (currentId === id) {
+        stopSound(id);
+        currentId = null;
+      } else {
+        if (currentId) stopSound(currentId);
+        sounds[id].play();
+        currentId = id;
+      }
+
+      fetch("/api/click", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ symbol: id }),
+      }).catch(() => {});
+    });
+  });
+</script>
