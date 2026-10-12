@@ -76,12 +76,17 @@ permalink: /improvisa/
 </div>
 
 <style>
+  body {
+    padding: 0;
+  }
   .sym-field {
+    min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
+    align-content: center;
     justify-content: center;
     gap: 2rem;
-    margin: 3rem auto;
+    padding: 2rem;
   }
   .sym {
     width: clamp(80px, 18vw, 140px);
@@ -90,6 +95,9 @@ permalink: /improvisa/
     background: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    transition:
+      opacity 0.4s,
+      filter 0.4s;
   }
   .sym img {
     pointer-events: none;
@@ -98,18 +106,56 @@ permalink: /improvisa/
     outline: 2px dashed var(--color-red);
     outline-offset: 6px;
   }
+
+  /* quando algum som está a tocar, os outros esmaecem */
+  .sym-field.has-playing .sym:not(.playing) {
+    opacity: 0.35;
+  }
+
+  /* o símbolo ativo: brilho + pulsação lenta */
+  .sym.playing {
+    filter: drop-shadow(0 0 14px var(--color-red));
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.08);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sym.playing {
+      animation: none;
+    }
+  }
 </style>
 
 <script>
+  const field = document.querySelector(".sym-field");
+  const buttons = document.querySelectorAll(".sym");
   const sounds = {};
   let currentId = null;
+
+  // marca visualmente qual está a tocar (ou nenhum, se id for null)
+  function setPlaying(id) {
+    currentId = id;
+    buttons.forEach((b) => {
+      const on = b.dataset.symbol === id;
+      b.classList.toggle("playing", on);
+      b.setAttribute("aria-pressed", on);
+    });
+    field.classList.toggle("has-playing", id !== null);
+  }
 
   function stopSound(id) {
     sounds[id].pause();
     sounds[id].currentTime = 0;
   }
 
-  document.querySelectorAll(".sym").forEach((btn) => {
+  buttons.forEach((btn) => {
     const id = btn.dataset.symbol;
 
     const audio = new Audio(btn.dataset.sound);
@@ -120,18 +166,22 @@ permalink: /improvisa/
     btn.addEventListener("click", () => {
       if (currentId === id) {
         stopSound(id);
-        currentId = null;
+        setPlaying(null);
       } else {
         if (currentId) stopSound(currentId);
-        sounds[id].play();
-        currentId = id;
+        setPlaying(id);
+        // se o som falhar (ficheiro em falta, etc.), o indicador não fica a mentir
+        sounds[id].play().catch((e) => {
+          console.error("som não tocou:", e);
+          if (currentId === id) setPlaying(null);
+        });
       }
 
       fetch("/api/click", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ symbol: id }),
-      }).catch(() => {});
+      }).catch((e) => console.error("click não gravado:", e));
     });
   });
 </script>
