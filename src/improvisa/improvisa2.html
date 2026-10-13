@@ -13,21 +13,18 @@ permalink: /improvisa/improvisa2/
     overflow: hidden;
     padding: 0;
   }
-
   #stage {
     position: fixed;
-    inset: 0; /* covers the whole screen */
-    z-index: 1; /* below your .topbar (999) */
+    inset: 0;
     overflow: hidden;
-    pointer-events: none; /* never blocks clicks on the menu */
+    pointer-events: none;
   }
-
   #stage img {
     position: absolute;
-    margin: 0; /* cancels your global "margin: 0 auto" */
+    margin: 0;
     max-width: none;
     height: auto;
-    transition: opacity 2s;
+    opacity: 0;
     user-select: none;
   }
 </style>
@@ -43,49 +40,116 @@ permalink: /improvisa/improvisa2/
     "tambor",
     "teclado",
   ];
-  const EXT = "svg"; // change to svg or webp if you switch
+  const EXT = "svg";
   const BASE = "/improvisa/symbols/";
-  const INTERVAL_MS = 30000; // 30 seconds
+
+  const HISTORY_EVERY_MS = 30000; // background replay: 5 old symbols every 30s
+  const HISTORY_LIFETIME_MS = 28000; // they fade just before the next batch
+  const LIVE_POLL_MS = 2000; // how often to ask for new clicks
+  const LIVE_LIFETIME_MS = 30000; // a live symbol stays 30s, then fades
+  const FADE_IN_MS = 600;
+  const FADE_OUT_MS = 2000;
+  const MAX_ON_SCREEN = 150; // safety cap for slower computers
 
   const stage = document.getElementById("stage");
-  let cursor = 0; // our bookmark in the database
+  const onScreen = [];
 
-  // Download every image once, so they appear instantly later
   SYMBOLS.forEach((s) => {
     new Image().src = `${BASE}${s}.${EXT}`;
   });
 
   const rand = (min, max) => Math.random() * (max - min) + min;
 
-  async function showNextBatch() {
-    try {
-      const res = await fetch(`/api/next?after=${cursor}`);
-      const data = await res.json();
-      cursor = data.cursor;
+  // Draws one symbol at a random size/position/rotation and removes it after its lifetime
+  function spawn(symbol, lifetimeMs) {
+    const img = document.createElement("img");
+    img.src = `${BASE}${symbol}.${EXT}`;
+    img.alt = "";
+    img.style.width = rand(8, 40) + "vw";
+    img.style.left = rand(-5, 90) + "vw";
+    img.style.top = rand(-5, 80) + "vh";
+    img.style.transform = `rotate(${rand(0, 360)}deg)`;
+    stage.appendChild(img);
+    onScreen.push(img);
 
-      // fade out the previous batch, then remove it from the page
-      const old = Array.from(stage.children);
-      old.forEach((el) => (el.style.opacity = 0));
-      setTimeout(() => old.forEach((el) => el.remove()), 2000);
+    function leave() {
+      if (img.dataset.leaving) return;
+      img.dataset.leaving = "1";
+      img.style.transition = `opacity ${FADE_OUT_MS}ms`;
+      img.style.opacity = 0;
+      setTimeout(() => {
+        img.remove();
+        const i = onScreen.indexOf(img);
+        if (i !== -1) onScreen.splice(i, 1);
+      }, FADE_OUT_MS);
+    }
+    img._leave = leave;
 
-      // add the new batch at random size, position and rotation
-      data.items.forEach((item) => {
-        const img = document.createElement("img");
-        img.src = `${BASE}${item.symbol}.${EXT}`;
-        img.alt = "";
-        img.style.width = rand(8, 40) + "vw";
-        img.style.left = rand(-5, 90) + "vw";
-        img.style.top = rand(-5, 80) + "vh";
-        img.style.transform = `rotate(${rand(0, 360)}deg)`;
-        img.style.opacity = 0;
-        stage.appendChild(img);
-        img.onload = () => requestAnimationFrame(() => (img.style.opacity = 1));
+    img.onload = () =>
+      requestAnimationFrame(() => {
+        if (img.dataset.leaving) return;
+        img.style.transition = `opacity ${FADE_IN_MS}ms`;
+        img.style.opacity = 1;
       });
-    } catch (err) {
-      // if something fails (network blip), try again at the next tick
+
+    setTimeout(leave, lifetimeMs);
+
+    // too many on screen: retire the oldest one early
+    if (onScreen.length > MAX_ON_SCREEN) {
+      const oldest = onScreen.find((el) => !el.dataset.leaving);
+      if (oldest) oldest._leave();
     }
   }
 
-  showNextBatch(); // show one batch immediately
-  setInterval(showNextBatch, INTERVAL_MS); // then every 30 seconds, forever
+  // ---- Loop 1: background replay of the history (keeps the screen never blank) ----
+  let historyCursor = 0;
+
+  async function historyBatch() {
+    try {
+      const res = await fetch(`/api/next?after=${historyCursor}`);
+      if (!res.ok) throw new Error("/api/next returned " + res.status);
+      const data = await res.json();
+      historyCursor = data.cursor;
+      data.items.forEach((item) => spawn(item.symbol, HISTORY_LIFETIME_MS));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // ---- Loop 2: live clicks, drawn as they arrive ----
+  let liveCursor = null; // null until we learn where "now" is
+
+  async function pollLive() {
+    if (document.hidden) return; // don't waste requests if the tab is hidden
+    try {
+      const url =
+        liveCursor === null
+          ? "/api/since?after=latest"
+          : `/api/since?after=${liveCursor}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("/api/since returned " + res.status);
+      const data = await res.json();
+      liveCursor = data.cursor;
+
+      // spread this poll's clicks over the polling interval so it feels continuous
+      const n = data.items.length;
+      data.items.forEach((item, i) => {
+        setTimeout(
+          () => spawn(item.symbol, LIVE_LIFETIME_MS),
+          (i / n) * LIVE_POLL_MS,
+        );
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function liveLoop() {
+    await pollLive();
+    setTimeout(liveLoop, LIVE_POLL_MS); // waits for each poll to finish, so no overlaps
+  }
+
+  historyBatch();
+  setInterval(historyBatch, HISTORY_EVERY_MS);
+  liveLoop();
 </script>
