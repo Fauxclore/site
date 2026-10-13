@@ -4,14 +4,15 @@ title: Improvisa
 permalink: /improvisa/
 ---
 
-<div class="main">
-  <h1>Improvisa</h1>
+<div class="page">
+  <p id="instruction" aria-live="polite"></p>
 
   <div class="sym-field">
     <button
       class="sym"
       data-symbol="back"
       data-sound="/improvisa/sounds/back.mp3"
+      data-instruction="Instrução para o símbolo back."
       aria-label="back"
     >
       <img src="/improvisa/symbols/back.svg" alt="" draggable="false" />
@@ -20,6 +21,7 @@ permalink: /improvisa/
       class="sym"
       data-symbol="forward"
       data-sound="/improvisa/sounds/forward.mp3"
+      data-instruction="Instrução para o símbolo forward."
       aria-label="forward"
     >
       <img src="/improvisa/symbols/forward.svg" alt="" draggable="false" />
@@ -28,6 +30,7 @@ permalink: /improvisa/
       class="sym"
       data-symbol="metronomo"
       data-sound="/improvisa/sounds/metronomo.mp3"
+      data-instruction="Instrução para o símbolo metrónomo."
       aria-label="metrónomo"
     >
       <img src="/improvisa/symbols/metronomo.svg" alt="" draggable="false" />
@@ -36,6 +39,7 @@ permalink: /improvisa/
       class="sym"
       data-symbol="pausa"
       data-sound="/improvisa/sounds/pausa.mp3"
+      data-instruction="Instrução para o símbolo pausa."
       aria-label="pausa"
     >
       <img src="/improvisa/symbols/pausa.svg" alt="" draggable="false" />
@@ -44,6 +48,7 @@ permalink: /improvisa/
       class="sym"
       data-symbol="play"
       data-sound="/improvisa/sounds/play.mp3"
+      data-instruction="Instrução para o símbolo play."
       aria-label="play"
     >
       <img src="/improvisa/symbols/play.svg" alt="" draggable="false" />
@@ -52,6 +57,7 @@ permalink: /improvisa/
       class="sym"
       data-symbol="sax"
       data-sound="/improvisa/sounds/sax.mp3"
+      data-instruction="Instrução para o símbolo sax."
       aria-label="sax"
     >
       <img src="/improvisa/symbols/sax.svg" alt="" draggable="false" />
@@ -60,6 +66,7 @@ permalink: /improvisa/
       class="sym"
       data-symbol="tambor"
       data-sound="/improvisa/sounds/tambor.mp3"
+      data-instruction="Instrução para o símbolo tambor."
       aria-label="tambor"
     >
       <img src="/improvisa/symbols/tambor.svg" alt="" draggable="false" />
@@ -68,6 +75,7 @@ permalink: /improvisa/
       class="sym"
       data-symbol="teclado"
       data-sound="/improvisa/sounds/teclado.mp3"
+      data-instruction="Instrução para o símbolo teclado."
       aria-label="teclado"
     >
       <img src="/improvisa/symbols/teclado.svg" alt="" draggable="false" />
@@ -79,8 +87,24 @@ permalink: /improvisa/
   body {
     padding: 0;
   }
-  .sym-field {
+
+  /* column layout: instruction on top, symbols fill the rest */
+  .page {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  #instruction {
+    min-height: 8rem; /* reserves space so the page doesn't jump */
+    margin: 0;
+    padding: 2rem 1.5rem 0;
+    text-align: center; /* your body is justified, so override */
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    white-space: pre-line; /* lets you use line breaks in the text */
+  }
+
+  .sym-field {
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -107,12 +131,10 @@ permalink: /improvisa/
     outline-offset: 6px;
   }
 
-  /* quando algum som está a tocar, os outros esmaecem */
   .sym-field.has-playing .sym:not(.playing) {
     opacity: 0.35;
   }
 
-  /* o símbolo ativo: brilho + pulsação lenta */
   .sym.playing {
     filter: drop-shadow(0 0 14px var(--color-red));
     animation: pulse 1.6s ease-in-out infinite;
@@ -135,18 +157,25 @@ permalink: /improvisa/
 
 <script>
   const field = document.querySelector(".sym-field");
+  const instruction = document.getElementById("instruction");
   const buttons = document.querySelectorAll(".sym");
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   const sounds = {};
   let currentId = null;
 
-  // marca visualmente qual está a tocar (ou nenhum, se id for null)
+  // marks which symbol is playing (or none) and shows its instruction
   function setPlaying(id) {
     currentId = id;
+    let text = "";
     buttons.forEach((b) => {
       const on = b.dataset.symbol === id;
       b.classList.toggle("playing", on);
       b.setAttribute("aria-pressed", on);
+      if (on) text = b.dataset.instruction || "";
     });
+    instruction.textContent = text;
     field.classList.toggle("has-playing", id !== null);
   }
 
@@ -170,7 +199,7 @@ permalink: /improvisa/
       } else {
         if (currentId) stopSound(currentId);
         setPlaying(id);
-        // se o som falhar (ficheiro em falta, etc.), o indicador não fica a mentir
+        window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
         sounds[id].play().catch((e) => {
           console.error("som não tocou:", e);
           if (currentId === id) setPlaying(null);
