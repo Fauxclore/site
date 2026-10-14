@@ -147,6 +147,8 @@ permalink: /improvisa/improvisem/
   const FADE_IN_MS = 1500;
   const FADE_OUT_MS = 2000;
   const MAX_ON_SCREEN = 150; // safety cap for slower computers
+  const REPLAY_BATCH = 7; // X: how many symbols at a time in loop mode
+  const BATCH_PAUSE_MS = 1000; // empty pause between one batch and the next (0 = none)
 
   let mode = "loop"; // "loop" = replay the history, "live" = draw clicks as they arrive
 
@@ -172,6 +174,11 @@ permalink: /improvisa/improvisem/
     stage.appendChild(img);
     onScreen.push(img);
 
+    let resolveGone;
+    const gone = new Promise((resolve) => {
+      resolveGone = resolve;
+    });
+
     function leave() {
       if (img.dataset.leaving) return;
       img.dataset.leaving = "1";
@@ -181,6 +188,7 @@ permalink: /improvisa/improvisem/
         img.remove();
         const i = onScreen.indexOf(img);
         if (i !== -1) onScreen.splice(i, 1);
+        resolveGone(); // "this symbol is completely gone"
       }, FADE_OUT_MS);
     }
     img._leave = leave;
@@ -198,51 +206,57 @@ permalink: /improvisa/improvisem/
       const oldest = onScreen.find((el) => !el.dataset.leaving);
       if (oldest) oldest._leave();
     }
+
+    return gone;
   }
 
-  // ---- LOOP mode: replay the history with the ORIGINAL timing ----
+  // ---- LOOP mode: X symbols at a time; the next X only come after all have faded out ----
   let replayCursor = 0;
-  let replayPrevT = null;
-  let cycleStartedAt = Date.now();
 
   async function replayLoop() {
     while (true) {
       if (mode !== "loop") {
-        replayPrevT = null; // when loop mode comes back, start the pacing fresh
         await sleep(300);
         continue;
       }
       try {
-        const res = await fetch(`/api/replay?after=${replayCursor}`);
+        const res = await fetch(
+          `/api/replay?after=${replayCursor}&limit=${REPLAY_BATCH}`,
+        );
         if (!res.ok) throw new Error("/api/replay returned " + res.status);
         const { items } = await res.json();
 
         if (items.length === 0) {
-          // end of history (or empty): wait until the last symbols have faded
-          // before starting over, so no click is on screen twice at once
-          const elapsed = Date.now() - cycleStartedAt;
+          // end of history: start again from the top
+          const wasAtStart = replayCursor === 0;
           replayCursor = 0;
-          replayPrevT = null;
-          await sleep(Math.max(WRAP_PAUSE_MS, REPLAY_LIFETIME_MS - elapsed));
-          cycleStartedAt = Date.now();
+          if (wasAtStart) await sleep(WRAP_PAUSE_MS); // database is empty: look again in a few seconds
           continue;
         }
 
+        const gone = []; // one promise per symbol, resolved when it has fully faded out
+        let prevT = null;
+
         for (const item of items) {
           if (mode !== "loop") break;
+
+          // keep the original rhythm between the symbols of this batch
           let gap = 0;
-          if (replayPrevT !== null && item.t != null) {
+          if (prevT !== null && item.t != null) {
             gap =
-              Math.min(Math.max(item.t - replayPrevT, 0), MAX_GAP_MS) /
-              REPLAY_SPEED;
+              Math.min(Math.max(item.t - prevT, 0), MAX_GAP_MS) / REPLAY_SPEED;
           }
-          if (item.t != null) replayPrevT = item.t;
+          if (item.t != null) prevT = item.t;
 
           await sleep(gap);
           if (mode !== "loop") break; // the mode may have changed during the pause
-          spawn(item.symbol, REPLAY_LIFETIME_MS);
+          gone.push(spawn(item.symbol, REPLAY_LIFETIME_MS));
           replayCursor = item.id;
         }
+
+        // the next batch starts only when every symbol of this one has disappeared
+        await Promise.all(gone);
+        await sleep(BATCH_PAUSE_MS);
       } catch (err) {
         console.error(err);
         await sleep(WRAP_PAUSE_MS);
