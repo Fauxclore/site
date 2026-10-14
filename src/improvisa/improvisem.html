@@ -79,14 +79,18 @@ permalink: /improvisa/improvisem/
 
 <script>
   const SYMBOLS = [
-    "back",
-    "forward",
-    "metronomo",
-    "pausa",
-    "play",
-    "sax",
-    "tambor",
-    "teclado",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
   ];
   const EXT = "png";
   const BASE = "/improvisa/symbols/";
@@ -157,6 +161,7 @@ permalink: /improvisa/improvisem/
 
   let replayCursor = 0;
   let replayPrevT = null;
+  let cycleStartedAt = Date.now();
 
   async function replayLoop() {
     while (true) {
@@ -166,10 +171,13 @@ permalink: /improvisa/improvisem/
         const { items } = await res.json();
 
         if (items.length === 0) {
-          // reached the end of the history (or it's empty): wrap to the top
+          // end of history (or it's empty): wait until the last symbols have
+          // faded before starting over, so no click is ever on screen twice
+          const elapsed = Date.now() - cycleStartedAt;
           replayCursor = 0;
           replayPrevT = null;
-          await sleep(WRAP_PAUSE_MS);
+          await sleep(Math.max(WRAP_PAUSE_MS, REPLAY_LIFETIME_MS - elapsed));
+          cycleStartedAt = Date.now();
           continue;
         }
 
@@ -225,8 +233,7 @@ permalink: /improvisa/improvisem/
 
   async function liveLoop() {
     await pollLive();
-    setTimeout(liveLoop, LIVE_POLL_MS); // waits for each poll to finish, so no overlaps
+    setTimeout(liveLoop, LIVE_POLL_MS);
   }
-  replayLoop();
   liveLoop();
 </script>
