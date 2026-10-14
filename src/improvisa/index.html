@@ -232,15 +232,16 @@ permalink: /improvisa/
       if (currentId === id) {
         stopSound(id);
         setPlaying(null);
-      } else {
-        if (currentId) stopSound(currentId);
-        setPlaying(id);
-        window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
-        sounds[id].play().catch((e) => {
-          console.error("som não tocou:", e);
-          if (currentId === id) setPlaying(null);
-        });
+        return; // switching a sound off is NOT sent to the display
       }
+
+      if (currentId) stopSound(currentId);
+      setPlaying(id);
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      sounds[id].play().catch((e) => {
+        console.error("som não tocou:", e);
+        if (currentId === id) setPlaying(null);
+      });
 
       fetch("/api/click", {
         method: "POST",
