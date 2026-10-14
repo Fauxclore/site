@@ -11,8 +11,8 @@ export async function onRequestPost({ request, env }) {
     return new Response("bad symbol", { status: 400 });
   }
 
-  await env.DB.prepare("INSERT INTO clicks (symbol) VALUES (?)")
-    .bind(symbol)
+  await env.DB.prepare("INSERT INTO clicks (symbol, t) VALUES (?, ?)")
+    .bind(symbol, Date.now())
     .run();
 
   return new Response(null, { status: 204 });

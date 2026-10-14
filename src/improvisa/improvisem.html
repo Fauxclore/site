@@ -1,8 +1,16 @@
 ---
 layout: improvisa.njk
 title: Improvisa
-permalink: /improvisa/improvisa2/
+permalink: /improvisa/improvisem/
 ---
+
+<div id="staves" aria-hidden="true">
+  <div class="staff"></div>
+  <div class="staff"></div>
+  <div class="staff"></div>
+  <div class="staff"></div>
+  <div class="staff"></div>
+</div>
 
 <div id="stage"></div>
 
@@ -26,6 +34,49 @@ permalink: /improvisa/improvisa2/
     height: auto;
     opacity: 0;
     user-select: none;
+    z-index: 1;
+  }
+
+  #staves {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* spreads the staves down the screen */
+    padding: 0 4vw;
+    pointer-events: none;
+
+    --gap: clamp(14px, 2.6vh, 30px); /* distance between the 5 lines */
+    --line: rgba(221, 221, 187, 0.45); /* your --color-primary, translucent */
+  }
+
+  .staff {
+    position: relative;
+    height: calc(var(--gap) * 4 + 1px);
+    /* a 1px line every --gap pixels; 5 lines fit in this height */
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--line) 0 1px,
+      transparent 1px var(--gap)
+    );
+  }
+
+  /* barlines at the start and end of each staff, like a printed score */
+  .staff::before,
+  .staff::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+  .staff::before {
+    left: 0;
+  }
+  .staff::after {
+    right: 0;
   }
 </style>
 
@@ -43,8 +94,6 @@ permalink: /improvisa/improvisa2/
   const EXT = "png";
   const BASE = "/improvisa/symbols/";
 
-  const HISTORY_EVERY_MS = 15000; // background replay: 5 old symbols every 30s
-  const HISTORY_LIFETIME_MS = 14000; // they fade just before the next batch
   const LIVE_POLL_MS = 2000; // how often to ask for new clicks
   const LIVE_LIFETIME_MS = 10000; // a live symbol stays 30s, then fades
   const FADE_IN_MS = 1500;
@@ -101,20 +150,53 @@ permalink: /improvisa/improvisa2/
     }
   }
 
-  // ---- Loop 1: background replay of the history (keeps the screen never blank) ----
-  let historyCursor = 0;
+  // ---- Replay of the history with the ORIGINAL timing ----
+  const REPLAY_LIFETIME_MS = 30000; // how long each replayed symbol stays
+  const MAX_GAP_MS = 4000; // any pause longer than this is shortened to this
+  const WRAP_PAUSE_MS = 3000; // pause before restarting from the top
+  const REPLAY_SPEED = 1; // 1 = original speed, 2 = twice as fast
 
-  async function historyBatch() {
-    try {
-      const res = await fetch(`/api/next?after=${historyCursor}`);
-      if (!res.ok) throw new Error("/api/next returned " + res.status);
-      const data = await res.json();
-      historyCursor = data.cursor;
-      data.items.forEach((item) => spawn(item.symbol, HISTORY_LIFETIME_MS));
-    } catch (err) {
-      console.error(err);
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  let replayCursor = 0;
+  let replayPrevT = null;
+
+  async function replayLoop() {
+    while (true) {
+      try {
+        const res = await fetch(`/api/replay?after=${replayCursor}`);
+        if (!res.ok) throw new Error("/api/replay returned " + res.status);
+        const { items } = await res.json();
+
+        if (items.length === 0) {
+          // reached the end of the history (or it's empty): wrap to the top
+          replayCursor = 0;
+          replayPrevT = null;
+          await sleep(WRAP_PAUSE_MS);
+          continue;
+        }
+
+        for (const item of items) {
+          let gap = 0;
+          if (replayPrevT !== null && item.t != null) {
+            gap =
+              Math.min(Math.max(item.t - replayPrevT, 0), MAX_GAP_MS) /
+              REPLAY_SPEED;
+          }
+          if (item.t != null) replayPrevT = item.t;
+
+          await sleep(gap);
+          spawn(item.symbol, REPLAY_LIFETIME_MS);
+          replayCursor = item.id;
+        }
+      } catch (err) {
+        console.error(err);
+        await sleep(WRAP_PAUSE_MS); // don't hammer the server if something is wrong
+      }
     }
   }
+
+  replayLoop();
 
   // ---- Loop 2: live clicks, drawn as they arrive ----
   let liveCursor = null; // null until we learn where "now" is
@@ -148,8 +230,6 @@ permalink: /improvisa/improvisa2/
     await pollLive();
     setTimeout(liveLoop, LIVE_POLL_MS); // waits for each poll to finish, so no overlaps
   }
-
-  historyBatch();
-  setInterval(historyBatch, HISTORY_EVERY_MS);
+  replayLoop();
   liveLoop();
 </script>
