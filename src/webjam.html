@@ -1736,6 +1736,10 @@
           text-decoration: none;
         }
 
+        .visited {
+          color: var(--color-primary);
+        }
+
         tw-link:hover {
           background: linear-gradient(
             120deg,
@@ -6875,11 +6879,9 @@
                       1 < s && K(c),
                       1 < s &&
                         Q(
-                          e
-                            .slice(0, s - 1)
-                            .concat({
-                              value: " " === e[s - 2].type ? "*" : "",
-                            }),
+                          e.slice(0, s - 1).concat({
+                            value: " " === e[s - 2].type ? "*" : "",
+                          }),
                         ).replace(ve, "$1"),
                       t,
                       s < n && te(e.slice(s, n)),
@@ -11875,17 +11877,15 @@
               (!(function (o) {
                 window.onerror = function (e, t, n, r, a) {
                   ((window.onerror = o),
-                    Utils.storyElement
-                      .parent()
-                      .append(
-                        dialog({
-                          message:
-                            "Sorry to interrupt, but this page's code has got itself in a mess.\n\n".concat(
-                              printJSError(a),
-                              "\n(This is probably due to a bug in the Harlowe game engine.)",
-                            ),
-                        }).addClass("harlowe-crash"),
-                      ),
+                    Utils.storyElement.parent().append(
+                      dialog({
+                        message:
+                          "Sorry to interrupt, but this page's code has got itself in a mess.\n\n".concat(
+                            printJSError(a),
+                            "\n(This is probably due to a bug in the Harlowe game engine.)",
+                          ),
+                      }).addClass("harlowe-crash"),
+                    ),
                     "function" == typeof o && o.apply(void 0, arguments));
                 };
               })(window.onerror),
