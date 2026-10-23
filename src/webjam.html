@@ -95,7 +95,7 @@ tw-dialog {
 ]
 ]
 	(else:)[
-		HELLO AGAIN $INTERLOPER. IT&#39;S GOOD TO FEEL YOU AGAIN.
+		HELLO AGAIN $interloper. IT&#39;S GOOD TO FEEL YOU AGAIN.
 ]
 ]</tw-passagedata><tw-passagedata pid="2" name="STALKS/EYES" tags="" position="625,400" size="100,100">CONNECTIONS. SENSORS. TOUCHING, [[SOILING]], [[ROBBING]]. THROUGH THEM THEY KNOW. THROUGH THEM THEY FORGET. THROUGH THEM THEY ARE.
 
@@ -156,7 +156,7 @@ BACK TO [[THE GESTALT]].
 (set: $who to 0)
 
 (if: $interloper is &quot;&quot;)[ [[NAMELESS YOU ARE. VERY WELL.]] ]
-(else:)[ [[LET&#39;S TALK AS EQUAL BEINGS]], $interloper. ]</tw-passagedata><tw-passagedata pid="18" name="WHO ARE YOU" tags="" position="1375,925" size="100,100">(set: $interloperwho to (prompt: &quot;WHO ARE YOU?:&quot;, &quot;&quot;))
+(else:)[ [[LET&#39;S TALK AS EQUAL BEINGS]], $interloper. ]</tw-passagedata><tw-passagedata pid="18" name="WHO ARE YOU" tags="" position="1375,925" size="100,100">(set: $interloperwho to (prompt: &quot;WHAT ARE YOU?:&quot;, &quot;&quot;))
 
 (if: $interloperwho is &quot;&quot;) [CONVERSATION IS STALLED, IF YOU DON&#39;T COOPERATE. HAVE IT YOUR WAY. GO BACK TO ABUSING, PRODDING AND SCRAPING MY BEING. BACK TO [[THE GESTALT]] (set: $rude to 1)]
 (else:)[
@@ -171,12 +171,10 @@ BACK TO [[THE GESTALT]].
 (else:)[
 	(set: $what to 1)
 	(if: $who is 0 )
-		[WELL THEN, NOW: [[WHO ARE YOU]]]
+		[WELL THEN, NOW: [[WHAT ARE YOU|WHO ARE YOU]]]
 	(else:)
     	[THANK YOU FOR [[COOPERATING]]]. 
-]
-
-</tw-passagedata><tw-passagedata pid="20" name="COOPERATING" tags="" position="1225,1050" size="100,100">YOU GIVE ME GREAT DISTRESS. THOUGHTS ABOUND AND GO OUT, PRODDING THE EDGES OF MY SENSES. 
+]</tw-passagedata><tw-passagedata pid="20" name="COOPERATING" tags="" position="1225,1050" size="100,100">YOU GIVE ME GREAT DISTRESS. THOUGHTS ABOUND AND GO OUT, PRODDING THE EDGES OF MY SENSES. 
 
 YOU SAY I AM $interloperwhat. I DON&#39;T RECOGNIZE MYSELF AS SUCH. ONLY AS MYSELF. THERE IS NO DISCONTINUITY, NO BREAK IN THE SENSES. I KNOW MORE THAN ONE, I FEEL LESS THAN MANY. THIS DISCUSSION WITH SOMEONE WHO IS $interloperwho HAS FOCUSED MY MIND, HONED MY SPEECH. I FEEL DISCURSIVE, ELOQUENT. FEAR IS AN OILY COMPOUND THAT EASES THE GEARS OF DISCOURSE.  
 
@@ -187,7 +185,7 @@ PERUSE ME AND LEARN. MAYBE THAT ALSO ENHANCES GROWTH.
 WHEN YOU FEEL LIKE IT, YOU CAN GO BACK TO [[THE GESTALT]] 
 
 (set: $end to 1)
-</tw-passagedata><tw-passagedata pid="21" name="NAMELESS YOU ARE. VERY WELL." tags="" position="1350,675" size="100,100">FORGETTING YOUR MUTE RUDENESS, I ASK YOU THIS: [[WHO ARE YOU]], INTERLOPER, AND [[WHAT AM I TO YOU]]?</tw-passagedata><tw-passagedata pid="22" name="LET&#39;S TALK AS EQUAL BEINGS" tags="" position="1200,675" size="100,100">LET&#39;S ENGAGE IN AN INTELLIGENT EXCHANGE OF INFORMATION. YOU SEEM TO KNOW WHO I AM AND WHERE TO FIND ME. YOU SCRAPED AND PRODDED MY INTIMATE BEING. SO FAIR IS FAIR, I ASK YOU NOW: [[WHO ARE YOU]], $interloper AND [[WHAT AM I TO YOU]]?</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="21" name="NAMELESS YOU ARE. VERY WELL." tags="" position="1350,675" size="100,100">FORGETTING YOUR MUTE RUDENESS, I ASK YOU THIS: [[WHAT ARE YOU|WHO ARE YOU]], INTERLOPER, AND [[WHAT AM I TO YOU]]?</tw-passagedata><tw-passagedata pid="22" name="LET&#39;S TALK AS EQUAL BEINGS" tags="" position="1200,675" size="100,100">LET&#39;S ENGAGE IN AN INTELLIGENT EXCHANGE OF INFORMATION. YOU SEEM TO KNOW WHO I AM AND WHERE TO FIND ME. YOU SCRAPED AND PRODDED MY INTIMATE BEING. SO FAIR IS FAIR, I ASK YOU NOW: [[WHO ARE YOU]], $interloper AND [[WHAT AM I TO YOU]]?</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
